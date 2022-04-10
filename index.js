@@ -8,15 +8,12 @@ module.exports = () => {
       properties.forEach(({id, en}) => decl.prop === id && (decl.prop = en))
 
       values.forEach(({ id, en }) => decl.value === id && (decl.value = en))
-    }
 
-    /*
-    Declaration: {
-      color: (decl, postcss) {
-        // The fastest way find Declaration node if you know property name
+      if (decl.value.indexOf('paksakan!') >= 0) {
+        decl.value = decl.value.replace(/\s*paksakan!\s*/, '')
+        decl.important = true
       }
     }
-    */
   }
 }
 

@@ -16,3 +16,7 @@ test.each(properties)('converts property $id to $en', async ({ id, en }) => {
 test.each(values)('converts value in $id to $en', async ({ id, en }) => {
   await run(`a { stub-property: ${id}; }`, `a { stub-property: ${en}; }`, { })
 })
+
+test('it will convert paksakan! to !important', async () => {
+  await run('a { stub-property: stub-value paksakan!; }', 'a { stub-property: stub-value !important; }', {})
+})
