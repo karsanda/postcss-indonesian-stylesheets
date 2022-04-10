@@ -49,3 +49,11 @@ module.exports = {
 ```
 
 [official docs]: https://github.com/postcss/postcss#usage
+
+### Documentations
+- [CSS Properties](https://github.com/karsanda/postcss-indonesian-stylesheets/blob/main/properties.js)  
+- [CSS Values](https://github.com/karsanda/postcss-indonesian-stylesheets/blob/main/values.js)  
+
+### Contributing
+`postcss-indonesian-stylesheets` doesn't cover all CSS properties and values in Indonesian. 
+Any help in translating and adding more Indonesian word for properties and values is always appreciated.
