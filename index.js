@@ -1,22 +1,14 @@
-/**
- * @type {import('postcss').PluginCreator}
- */
-module.exports = (opts = {}) => {
-  // Work with options here
+const properties = require('./properties')
+const values = require('./values')
 
+module.exports = () => {
   return {
     postcssPlugin: 'postcss-indonesian-stylesheets',
-    /*
-    Root (root, postcss) {
-      // Transform CSS AST here
-    }
-    */
+    Declaration (decl) {
+      properties.forEach(({id, en}) => decl.prop === id && (decl.prop = en))
 
-    /*
-    Declaration (decl, postcss) {
-      // The faster way to find Declaration node
+      values.forEach(({ id, en }) => decl.value === id && (decl.value = en))
     }
-    */
 
     /*
     Declaration: {
