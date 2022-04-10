@@ -7,12 +7,18 @@
 ```css
 .foo {
   /* Input example */
+  a {
+    warna: merah paksakan!;
+  }
 }
 ```
 
 ```css
 .foo {
   /* Output example */
+  a {
+    color: red !important;
+  }
 }
 ```
 
