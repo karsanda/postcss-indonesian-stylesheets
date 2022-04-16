@@ -1,8 +1,13 @@
 {
   "name": "postcss-indonesian-stylesheets",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "PostCSS plugin for writing CSS in Indonesian",
-  "keywords": ["postcss", "css", "postcss-plugin", "postcss-indonesian-stylesheets"],
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "postcss-indonesian-stylesheets"
+  ],
   "scripts": {
     "test": "jest --coverage && eslint ."
   },
@@ -30,7 +35,10 @@
       "node": true,
       "es6": true
     },
-    "extends": ["eslint:recommended", "plugin:jest/recommended"],
+    "extends": [
+      "eslint:recommended",
+      "plugin:jest/recommended"
+    ],
     "rules": {
       "jest/expect-expect": "off"
     }
