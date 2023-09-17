@@ -52,7 +52,6 @@ const values = {
 
   // generic styles
   'normal': 'normal',
-  'bold': 'tebal',
   'bolder': 'lebih-tebal',
   'lighter': 'lebih-tipis',
   'scroll': 'gulir',
@@ -87,7 +86,7 @@ const values = {
   // styles (borders, outline)
   'thin': 'tipis',
   'medium': 'sedang',
-  'thick': 'tebal',
+  'thick': 'paling-tebal',
   'solid': 'solid',
   'dashed': 'putus-putus',
   'dotted': 'titik-titik',

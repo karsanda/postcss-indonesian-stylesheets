@@ -49,7 +49,7 @@ const properties = {
   'border-color': 'warna-batas',
 
   'border-image': 'gambar-batas',
-  'border-image-outset': 'gambar-batas',
+  'border-image-outset': 'gambar-batas-awal',
   'border-image-repeat': 'ulangi-gambar-batas',
   'border-image-slice': 'potong-gambar-batas',
   'border-image-source': 'sumber-gambar-batas',
@@ -223,9 +223,9 @@ const properties = {
 
   'padding-bottom': 'lapisan-bawah',
 
-  'padding-inline': 'lapisan-segaris',
-  'padding-inline-start': 'lapisan-blok-awal',
-  'padding-inline-end': 'lapisan-blok-akhir',
+  'padding-inline': 'lapisan-sejajar',
+  'padding-inline-start': 'lapisan-sejajar-awal',
+  'padding-inline-end': 'lapisan-sejajar-akhir',
   
   'padding-left': 'lapisan-kiri',
   'padding-right': 'lapisan-kanan',
