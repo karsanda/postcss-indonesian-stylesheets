@@ -5,7 +5,7 @@ const properties = {
   'align-items': 'laraskan-item',
   'align-self': 'laraskan-diri-sendiri',
   'all': 'semua',
-  
+
   'animation': 'animasi',
   'animation-delay': 'tunda-animasi',
   'animation-direction': 'arah-animasi',
@@ -14,14 +14,14 @@ const properties = {
   'animation-iteration-count': 'berapa-kali-animasi-dijalankan',
   'animation-name': 'nama-animasi',
   'animation-timing-function': 'fungsi-waktu-animasi',
-  
+
   'appearance': 'penampakan',
-  'aspect-ratio': 'rasio-aspek',
+  'aspect-ratio': 'aspek-rasio',
 
   // b
   'backdrop-filter': 'filter-latar',
   'backface-visibility': 'visibilitas-sisi-belakang',
-  
+
   'background': 'latar-belakang',
   'background-attachment': 'sisipan-latar-belakang',
   'background-blend-mode': 'mode-campuran-latar-belakang',
@@ -33,58 +33,58 @@ const properties = {
   'background-repeat': 'ulangi-latar-belakang',
   'background-size': 'ukuran-latar-belakang',
 
-  'border': 'garis-batas',
-  'border-block': 'garis-batas-blok',
-  'border-block-start': 'garis-batas-blok-awal',
-  'border-block-end': 'garis-batas-blok-akhir',
-  
-  'border-bottom': 'garis-batas-bawah',
-  'border-bottom-color': 'warna-garis-batas-bawah',
-  'border-bottom-left-radius': 'radius-garis-batas-kiri-bawah',
-  'border-bottom-right-radius': 'radius-garis-batas-kanan-bawah',
-  'border-bottom-style': 'model-garis-batas-bawah',
-  'border-bottom-width': 'lebar-garis-batas-bawah',
+  'border': 'batas',
+  'border-block': 'batas-blok',
+  'border-block-start': 'batas-blok-awal',
+  'border-block-end': 'batas-blok-akhir',
 
-  'border-collapse': 'runtuhkan-garis-batas',
-  'border-color': 'warna-garis-batas',
-  
-  'border-image': 'gambar-garis-batas',
-  'border-image-outset': 'gambar-garis-batas',
-  'border-image-repeat': 'ulangi-gambar-garis-batas',
-  'border-image-slice': 'potong-gambar-garis-batas',
-  'border-image-source': 'sumber-gambar-garis-batas',
-  'border-image-width': 'lebar-gambar-garis-batas',
+  'border-bottom': 'batas-bawah',
+  'border-bottom-color': 'warna-batas-bawah',
+  'border-bottom-left-radius': 'radius-batas-kiri-bawah',
+  'border-bottom-right-radius': 'radius-batas-kanan-bawah',
+  'border-bottom-style': 'model-batas-bawah',
+  'border-bottom-width': 'lebar-batas-bawah',
 
-  'border-inline': 'garis-batas-segaris',
-  'border-inline-start': 'garis-batas-segaris-awal',
-  'border-inline-end': 'garis-batas-segaris-akhir',
-  
-  'border-left': 'garis-batas-kiri',
-  'border-left-color': 'warna-garis-batas-kiri',
-  'border-left-style': 'model-garis-batas-kiri',
-  'border-left-width': 'lebar-garis-batas-kiri',
-  
-  'border-radius': 'radius-garis-batas',
-  
-  'border-right': 'garis-batas-kanan',
-  'border-right-color': 'warna-garis-batas-kanan',
-  'border-right-style': 'model-garis-batas-kanan',
-  'border-right-width': 'lebar-garis-batas-kanan',
-  
-  'border-spacing': 'spasi-garis-batas',
-  'border-style': 'model-garis-batas',
-  
-  'border-top': 'garis-batas-atas',
-  'border-top-color': 'warna-garis-batas-atas',
-  'border-top-left-radius': 'radius-garis-batas-kiri-atas',
-  'border-top-right-radius': 'radius-garis-batas-kanan-atas',
-  'border-top-style': 'model-garis-batas-atas',
-  'border-top-width': 'lebar-garis-batas-atas',
-  
-  'border-width': 'lebar-garis-batas',
-  
+  'border-collapse': 'runtuhan-batas',
+  'border-color': 'warna-batas',
+
+  'border-image': 'gambar-batas',
+  'border-image-outset': 'gambar-batas',
+  'border-image-repeat': 'ulangi-gambar-batas',
+  'border-image-slice': 'potong-gambar-batas',
+  'border-image-source': 'sumber-gambar-batas',
+  'border-image-width': 'lebar-gambar-batas',
+
+  'border-inline': 'batas-sejajar',
+  'border-inline-start': 'batas-sejajar-awal',
+  'border-inline-end': 'batas-sejajar-akhir',
+
+  'border-left': 'batas-kiri',
+  'border-left-color': 'warna-batas-kiri',
+  'border-left-style': 'model-batas-kiri',
+  'border-left-width': 'lebar-batas-kiri',
+
+  'border-radius': 'radius-batas',
+
+  'border-right': 'batas-kanan',
+  'border-right-color': 'warna-batas-kanan',
+  'border-right-style': 'model-batas-kanan',
+  'border-right-width': 'lebar-batas-kanan',
+
+  'border-spacing': 'spasi-batas',
+  'border-style': 'model-batas',
+
+  'border-top': 'batas-atas',
+  'border-top-color': 'warna-batas-atas',
+  'border-top-left-radius': 'radius-batas-kiri-atas',
+  'border-top-right-radius': 'radius-batas-kanan-atas',
+  'border-top-style': 'model-batas-atas',
+  'border-top-width': 'lebar-batas-atas',
+
+  'border-width': 'lebar-batas',
+
   'bottom': 'bawah',
-  'box-shadow': 'bayanga-kontainer',
+  'box-shadow': 'bayangan-kontainer',
   'box-sizing': 'model-ukuran-kontainer',
 
   // c
@@ -108,11 +108,11 @@ const properties = {
   'counter-reset': 'atur-ulang-pembilang',
   'counter-set': 'atur-pembilang',
   'cursor': 'kursor',
-  
+
   // d, e
   'direction': 'arah',
   'display': 'tampilan',
-  
+
   'empty-cells': 'sel-kosong',
 
   // f
@@ -124,8 +124,8 @@ const properties = {
   'flex-flow': 'aliran-fleks',
   'flex-grow': 'pelebaran-fleks',
   'flex-shrink': 'penyusutan-fleks',
-  // 'flex-wrap': 'basis-fleks',
-  
+  'flex-wrap': 'bungkus-fleks',
+
   'float': 'apung',
   'font': 'tulisan',
   'font-family': 'kumpulan-model-tulisan',
@@ -155,7 +155,7 @@ const properties = {
   'grid-template-areas': 'grid-templat-daerah',
   'grid-template-columns': 'grid-templat-kolom',
   'grid-template-rows': 'grid-templat-baris',
-  
+
   // h
   'height': 'tinggi',
   'hyphens': 'tanda-penghubung',
@@ -185,17 +185,17 @@ const properties = {
   'margin-block': 'pinggir-blok',
   'margin-block-end': 'pinggir-blok-akhir',
   'margin-block-start': 'pinggir-blok-awal',
-  
+
   'margin-bottom': 'pinggir-bawah',
-  
-  'margin-inline': 'pinggir-segaris',
-  'margin-inline-end': 'pinggir-segaris-akhir',
-  'margin-inline-start': 'pinggir-segaris-awal',
-  
+
+  'margin-inline': 'pinggir-sejajar',
+  'margin-inline-end': 'pinggir-sejajar-akhir',
+  'margin-inline-start': 'pinggir-sejajar-awal',
+
   'margin-left': 'pinggir-kiri',
   'margin-right': 'pinggir-kanan',
   'margin-top': 'pinggir-atas',
-  
+
   'max-height': 'tinggi-maksimal',
   'max-width': 'lebar-maksimal',
   'min-height': 'tinggi-minimal',
@@ -214,7 +214,7 @@ const properties = {
   'overflow': 'luapan',
   'overflow-x': 'luapan-x',
   'overflow-y': 'luapan-y',
-  
+
   // p
   'padding': 'lapisan',
   'padding-block': 'lapisan-blok',
@@ -230,21 +230,21 @@ const properties = {
   'padding-left': 'lapisan-kiri',
   'padding-right': 'lapisan-kanan',
   'padding-top': 'lapisan-atas',
-  
+
   'perspective': 'perspektif',
   'perspective-origin': 'awalan-perspektif',
   'place-content': 'tempatkan-konten',
   'place-items': 'tempatkan-item',
   'place-self': 'tempatkan-diri-sendiri',
   'position': 'posisi',
-  
+
   // q, r
   'quotes': 'tanda-petik',
   'resize': 'ubah-ukuran',
   'right': 'kanan',
   'rotate': 'rotasi',
   'row-gap': 'jarak-baris',
-  
+
   // s
   'scale': 'skala',
   'scroll-behavior': 'perilaku-gulir',
@@ -278,10 +278,10 @@ const properties = {
 
   // u, v, w, z
   'user-select': 'seleksi-pengguna',
-  
+
   'vertical-align': 'rata-vertikal',
   'visibility': 'visibilitas',
-  
+
   'white-space' : 'ruang-kosong',
   'will-change': 'akan-berubah',
   'width': 'lebar',

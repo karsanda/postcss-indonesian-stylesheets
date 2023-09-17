@@ -4,18 +4,18 @@ const values = {
   'initial': 'awal',
   'revert': 'kembalikan',
   'revert-layer': 'kembalikan-lapisan',
-  'unset': 'tidak-disetel',
+  'unset': 'hapus-setelan',
 
   'all': 'semua',
   'auto': 'otomatis',
   'bold': 'tebal',
   'both': 'kedua-duanya',
-  
+
   // intrinsic values
   'max-content': 'konten-maksimal',
   'min-content': 'konten-minimal',
   'fit-content': 'muat-konten',
-  
+
   // display values
   'static': 'statis',
   'relative': 'relatif',
@@ -34,7 +34,7 @@ const values = {
   'row-reverse': 'baris-terbalik', 
   'column': 'kolom',
   'column-reverse': 'kolom-terbalik',
-  
+
   // direction
   'start': 'awalan',
   'end': 'akhiran',
@@ -43,20 +43,20 @@ const values = {
   'right': 'kanan',
   'justify': 'ratakan',
   'match-parent': 'sesuaikan-orangtua',
-  
+
   'italic': 'miring',
   'no-repeat': 'tidak-berulang',
   'repeat': 'ulangi',
   'repeat-x': 'ulangi-x',
   'repeat-y': 'ulangi-y',
-  
+
   // generic styles
   'normal': 'normal',
   'bold': 'tebal',
   'bolder': 'lebih-tebal',
   'lighter': 'lebih-tipis',
   'scroll': 'gulir',
-  
+
   // lists
   'disc': 'disk',
   'circle': 'lingkaran',
@@ -75,13 +75,11 @@ const values = {
   'hebrew': 'ibrani',
   'lower-alpha': 'alpha-kecil',
   'upper-alpha': 'alpha-besar',
-  
+
   // animation values
   'infinite': 'selamanya',
   'forwards': 'maju',
   'backwards': 'mundur',
-  // 'both': 'kedua-duanya',
-  // 'none': 'tidak-ada' already defined
   'alternate': 'bergantian',
   'paused': 'dihentikan',
   'running': 'berjalan',
@@ -113,10 +111,10 @@ const values = {
   'alias': 'alias',
   'copy': 'salin',
   'move': 'gerakkan',
-  'no-drop': 'tidak-ada',
+  'no-drop': 'tidak-bisa-drop',
   'not-allowed': 'tidak-diizinkan',
   'all-scroll': 'gulir-semua',
-  
+
   'col-resize': 'ubah-ukuran-kolom',
   'row-resize': 'ubah-ukuran-baris',
   'n-resize': 'ubah-ukuran-u',
@@ -133,7 +131,7 @@ const values = {
   // quotes
   'open-quote': 'petik-buka',
   'close-quote': 'petik-tutup',
-  
+
   // color scheme
   'light': 'terang',
   'dark': 'gelap',
@@ -149,7 +147,7 @@ const values = {
   // will-change
   'scroll-position': 'posisi-gulir',
   'contents': 'konten',
-  
+
   // Colors
   'aqua': 'akua',
   'aquamarine': 'akuamarin',
