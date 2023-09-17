@@ -1,25 +1,155 @@
 const values = {
-  'absolute': 'absolut',
+  // global values
+  'inherit': 'wariskan',
+  'initial': 'awal',
+  'revert': 'kembalikan',
+  'revert-layer': 'kembalikan-lapisan',
+  'unset': 'tidak-disetel',
+
+  'all': 'semua',
   'auto': 'otomatis',
   'bold': 'tebal',
   'both': 'kedua-duanya',
+  
+  // intrinsic values
+  'max-content': 'konten-maksimal',
+  'min-content': 'konten-minimal',
+  'fit-content': 'muat-konten',
+  
+  // display values
+  'static': 'statis',
+  'relative': 'relatif',
+  'absolute': 'absolut',
   'fixed': 'tetap',
   'hidden': 'tersembunyi',
-  'inherit': 'warisan',
-  'initial': 'awal',
-  'italic': 'miring',
-  'left': 'kiri',
-  'no-repeat': 'tidak-berulang',
   'none': 'tidak-ada',
-  'relative': 'relatif',
+
+  // flex and grid
+  'flex-start': 'fleks-awal',
+  'flex-end': 'fleks-akhir',
+  'space-between': 'jarak-antara',
+  'space-around': 'jarak-sekitar',
+  'space-evenly': 'jarak-merata', 
+  'row': 'baris',
+  'row-reverse': 'baris-terbalik', 
+  'column': 'kolom',
+  'column-reverse': 'kolom-terbalik',
+  
+  // direction
+  'start': 'awalan',
+  'end': 'akhiran',
+  'center': 'tengah',
+  'left': 'kiri',
+  'right': 'kanan',
+  'justify': 'ratakan',
+  'match-parent': 'sesuaikan-orangtua',
+  
+  'italic': 'miring',
+  'no-repeat': 'tidak-berulang',
+  'repeat': 'ulangi',
   'repeat-x': 'ulangi-x',
   'repeat-y': 'ulangi-y',
-  'repeat': 'ulangi',
-  'right': 'kanan',
-  'solid': 'solid',
-  'static': 'statis',
-  'unset': 'tidak-disetel',
+  
+  // generic styles
+  'normal': 'normal',
+  'bold': 'tebal',
+  'bolder': 'lebih-tebal',
+  'lighter': 'lebih-tipis',
+  'scroll': 'gulir',
+  
+  // lists
+  'disc': 'disk',
+  'circle': 'lingkaran',
+  'square': 'kotak',
+  'cjk-decimal': 'desimal-cjk',
+  'decimal': 'desimal',
+  'decimal-leading-zero': 'desimal-dengan-nol',
+  'ethiopic-numeric': 'numerik-ethiopia',
+  'lower-roman': 'romawi-kecil',
+  'upper-roman': 'romawi-besar',
+  'lower-greek': 'yunani-kecil',
+  'lower-latin': 'latin-kecil',
+  'upper-latin': 'latin-besar',
+  'armenian': 'armenia',
+  'georgian': 'georgia',
+  'hebrew': 'ibrani',
+  'lower-alpha': 'alpha-kecil',
+  'upper-alpha': 'alpha-besar',
+  
+  // animation values
+  'infinite': 'selamanya',
+  'forwards': 'maju',
+  'backwards': 'mundur',
+  // 'both': 'kedua-duanya',
+  // 'none': 'tidak-ada' already defined
+  'alternate': 'bergantian',
+  'paused': 'dihentikan',
+  'running': 'berjalan',
 
+  // styles (borders, outline)
+  'thin': 'tipis',
+  'medium': 'sedang',
+  'thick': 'tebal',
+  'solid': 'solid',
+  'dashed': 'putus-putus',
+  'dotted': 'titik-titik',
+  'double': 'ganda',
+  'groove': 'alur',
+  'ridge': 'alur-terbalik',
+  'inset': 'di-dalam',
+  'outset': 'di-luar',
+
+  // cursor
+  'default': 'bawaan',
+  'context-menu': 'menu-konteks',
+  'help': 'bantuan',
+  'pointer': 'penunjuk',
+  'progress': 'kemajuan',
+  'wait': 'tunggu',
+  'cell': 'sel',
+  'crosshair': 'garis-bidik',
+  'text': 'teks',
+  'vertical-text': 'teks-vertikal',
+  'alias': 'alias',
+  'copy': 'salin',
+  'move': 'gerakkan',
+  'no-drop': 'tidak-ada',
+  'not-allowed': 'tidak-diizinkan',
+  'all-scroll': 'gulir-semua',
+  
+  'col-resize': 'ubah-ukuran-kolom',
+  'row-resize': 'ubah-ukuran-baris',
+  'n-resize': 'ubah-ukuran-u',
+  's-resize': 'ubah-ukuran-s',
+  'e-resize': 'ubah-ukuran-t',
+  'w-resize': 'ubah-ukuran-b',
+  'ns-resize': 'ubah-ukuran-us',
+  'ew-resize': 'ubah-ukuran-tb',
+  'ne-resize': 'ubah-ukuran-tl',
+  'nw-resize': 'ubah-ukuran-bl',
+  'se-resize': 'ubah-ukuran-te',
+  'sw-resize': 'ubah-ukuran-bd',
+
+  // quotes
+  'open-quote': 'petik-buka',
+  'close-quote': 'petik-tutup',
+  
+  // color scheme
+  'light': 'terang',
+  'dark': 'gelap',
+  'only': 'hanya',
+
+  // isolation
+  'isolate': 'isolasikan',
+
+  // visibility
+  'visible': 'terlihat',
+  'collapse': 'runtuhkan',
+
+  // will-change
+  'scroll-position': 'posisi-gulir',
+  'contents': 'konten',
+  
   // Colors
   'aqua': 'akua',
   'aquamarine': 'akuamarin',
