@@ -1,9 +1,9 @@
 const values = {
   // global values
-  'inherit': 'warisan',
+  'inherit': 'wariskan',
   'initial': 'awal',
-  'revert': 'balikkan',
-  'revert-layer': 'balikkan-lapisan',
+  'revert': 'kembalikan',
+  'revert-layer': 'kembalikan-lapisan',
   'unset': 'tidak-disetel',
 
   'all': 'semua',
