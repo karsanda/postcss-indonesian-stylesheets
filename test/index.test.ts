@@ -42,6 +42,12 @@ test('it will convert paksakan! to !important', async () => {
   )
 })
 
+test('paksakan! is case-insensitive and must be a standalone trailing word', async () => {
+  await run('a { warna: merah PAKSAKAN! ; }', 'a { color: red !important; }')
+  await run('a { content: "paksakan!"; }', 'a { content: "paksakan!"; }')
+  await run('a { content: "a paksakan!"; }', 'a { content: "a paksakan!"; }')
+})
+
 test('converts every word in a multi-word value', async () => {
   await run('a { margin: 0 otomatis; }', 'a { margin: 0 auto; }')
   await run('a { batas: 1px padat merah; }', 'a { border: 1px solid red; }')
@@ -76,4 +82,15 @@ test('accepts extra and overriding words', async () => {
   await run('a { warna-teks: merah-bata; }', 'a { color: firebrick; }', opts)
   await run('a { warna: merah; }', 'a { color: crimson; }', opts)
   await run('a { warna: merah; }', 'a { color: red; }', {})
+})
+
+test('converts property names inside transition and will-change', async () => {
+  await run('a { transisi: lebar 1s, warna 2s; }', 'a { transition: width 1s, color 2s; }')
+  await run('a { properti-transisi: semua; }', 'a { transition-property: all; }')
+  await run('a { akan-berubah: transformasi; }', 'a { will-change: transform; }')
+})
+
+test('leaves more author-defined names untouched', async () => {
+  await run('a { container-name: merah; }', 'a { container-name: merah; }')
+  await run('a { view-transition-name: merah; }', 'a { view-transition-name: merah; }')
 })

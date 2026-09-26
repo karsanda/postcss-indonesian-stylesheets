@@ -10,15 +10,27 @@ const IMPORTANT = 'paksakan!'
 
 // Properties whose values are author-defined names, not CSS keywords
 const identifierProperties = new Set([
+  'anchor-name',
   'animation-name',
+  'container-name',
   'counter-increment',
   'counter-reset',
   'font-family',
   'grid-area',
-  'grid-template-areas'
+  'grid-template-areas',
+  'position-anchor',
+  'scroll-timeline-name',
+  'timeline-scope',
+  'view-timeline-name',
+  'view-transition-name'
 ])
 
-function extend(base: Map<string, string>, extra: Record<string, string> = {}) {
+// Properties whose values name other properties
+const propertyListProperties = new Set(['transition', 'transition-property', 'will-change'])
+
+type Dictionary = Map<string, string>
+
+function extend(base: Dictionary, extra: Record<string, string> = {}) {
   const entries = Object.entries(extra)
   if (entries.length === 0) return base
   const map = new Map(base)
@@ -26,7 +38,24 @@ function extend(base: Map<string, string>, extra: Record<string, string> = {}) {
   return map
 }
 
-function translateValue(value: string, valueMap: Map<string, string>) {
+function lookup(word: string, dictionaries: Dictionary[]) {
+  const key = word.toLowerCase()
+  for (const dictionary of dictionaries) {
+    const en = dictionary.get(key)
+    if (en !== undefined) return en
+  }
+}
+
+function stripImportant(value: string) {
+  const trimmed = value.trimEnd()
+  if (!trimmed.toLowerCase().endsWith(IMPORTANT)) return
+  // Only a standalone trailing word, so "…paksakan!" inside a string is left alone
+  const before = trimmed.at(-IMPORTANT.length - 1)
+  if (before !== undefined && !/\s/.test(before)) return
+  return trimmed.slice(0, -IMPORTANT.length).trimEnd()
+}
+
+function translateValue(value: string, words: Dictionary[]) {
   const parsed = valueParser(value)
   let changed = false
 
@@ -34,7 +63,7 @@ function translateValue(value: string, valueMap: Map<string, string>) {
     if (node.type === 'function' && node.value.toLowerCase() === 'url') return false
     if (node.type !== 'word') return
 
-    const en = valueMap.get(node.value.toLowerCase())
+    const en = lookup(node.value, words)
     if (en !== undefined && en !== node.value) {
       node.value = en
       changed = true
@@ -51,12 +80,9 @@ function plugin(opts: plugin.Options = {}): Plugin {
   return {
     postcssPlugin: 'postcss-indonesian-stylesheets',
     Declaration(decl) {
-      const important = decl.value.indexOf(IMPORTANT)
-      if (important >= 0) {
-        // Same as replace(/\s*paksakan!\s*/, '') but linear-time (no ReDoS)
-        decl.value =
-          decl.value.slice(0, important).trimEnd() +
-          decl.value.slice(important + IMPORTANT.length).trimStart()
+      const withoutImportant = stripImportant(decl.value)
+      if (withoutImportant !== undefined) {
+        decl.value = withoutImportant
         decl.important = true
       }
 
@@ -64,9 +90,10 @@ function plugin(opts: plugin.Options = {}): Plugin {
 
       decl.prop = propertyMap.get(decl.prop.toLowerCase()) ?? decl.prop
 
-      if (!identifierProperties.has(decl.prop)) {
-        decl.value = translateValue(decl.value, valueMap)
-      }
+      if (identifierProperties.has(decl.prop)) return
+
+      const words = propertyListProperties.has(decl.prop) ? [propertyMap, valueMap] : [valueMap]
+      decl.value = translateValue(decl.value, words)
     }
   }
 }

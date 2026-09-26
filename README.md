@@ -69,10 +69,15 @@ export default {
 
 - Property names and every keyword in a value are translated, including keywords inside
   functions: `margin: 0 otomatis` → `margin: 0 auto`, `var(--x, merah)` → `var(--x, red)`.
+- Property names in `transition`, `transition-property` and `will-change` are translated:
+  `transisi: lebar 1s` → `transition: width 1s`.
 - Matching is case-insensitive.
-- `paksakan!` becomes `!important`.
+- `paksakan!` at the end of a value becomes `!important`.
 - Strings, `url()`, custom property values (`--foo: merah`) and author-defined names
-  (`font-family`, `animation-name`, `grid-area`, `grid-template-areas`, `counter-*`) are left untouched.
+  (`font-family`, `animation-name`, `grid-area`, `grid-template-areas`, `counter-*`,
+  `container-name`, `view-transition-name`, `anchor-name`, …) are left untouched.
+  Names inside shorthands such as `animation` or `container` are still translated if they
+  happen to be dictionary words.
 - Unknown words pass through unchanged, so Indonesian and English can be mixed freely.
 
 ## Options
