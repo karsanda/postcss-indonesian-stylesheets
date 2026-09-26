@@ -6,6 +6,8 @@ import values from './values.ts'
 const basePropertyMap = new Map(properties.map(({ id, en }) => [id, en]))
 const baseValueMap = new Map(values.map(({ id, en }) => [id, en]))
 
+const IMPORTANT = 'paksakan!'
+
 // Properties whose values are author-defined names, not CSS keywords
 const identifierProperties = new Set([
   'animation-name',
@@ -49,8 +51,12 @@ function plugin(opts: plugin.Options = {}): Plugin {
   return {
     postcssPlugin: 'postcss-indonesian-stylesheets',
     Declaration(decl) {
-      if (decl.value.includes('paksakan!')) {
-        decl.value = decl.value.replace(/\s*paksakan!\s*/, '')
+      const important = decl.value.indexOf(IMPORTANT)
+      if (important >= 0) {
+        // Same as replace(/\s*paksakan!\s*/, '') but linear-time (no ReDoS)
+        decl.value =
+          decl.value.slice(0, important).trimEnd() +
+          decl.value.slice(important + IMPORTANT.length).trimStart()
         decl.important = true
       }
 
