@@ -8,46 +8,70 @@
     "postcss-plugin",
     "postcss-indonesian-stylesheets"
   ],
-  "scripts": {
-    "test": "jest --coverage && eslint ."
-  },
   "author": "Pinto Karsanda <pintokarsanda@gmail.com>",
   "license": "MIT",
   "repository": "karsanda/postcss-indonesian-stylesheets",
-  "engines": {
-    "node": ">=12.0.0"
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
   },
+  "files": [
+    "dist",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsdown",
+    "typecheck": "tsc",
+    "lint": "eslint . && prettier --check .",
+    "format": "prettier --write .",
+    "dictionary": "node scripts/dictionary.ts",
+    "check:dictionary": "pnpm dictionary && git diff --exit-code DICTIONARY.md",
+    "test": "node --test --experimental-test-coverage --test-coverage-include='src/**' --test-coverage-lines=100 --test-coverage-functions=100 test/index.test.ts test/dictionary.test.ts",
+    "test:dist": "pnpm build && node --test test/dist.test.ts",
+    "check:pkg": "publint && attw --pack --profile node16",
+    "verify": "pnpm lint && pnpm typecheck && pnpm test && pnpm check:dictionary && pnpm test:dist && pnpm check:pkg",
+    "changeset": "changeset",
+    "release": "pnpm build && changeset publish",
+    "prepublishOnly": "pnpm build"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "packageManager": "pnpm@12.6.0",
   "peerDependencies": {
     "postcss": "^8.3.0"
   },
   "devDependencies": {
-    "clean-publish": "^3.4.2",
-    "eslint": "^8.0.1",
-    "eslint-plugin-jest": "^25.2.2",
-    "jest": "^27.3.1",
-    "postcss": "^8.3.11"
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@changesets/changelog-git": "^1.0.0",
+    "@changesets/cli": "^3.0.3",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.13.6",
+    "eslint": "^10.11.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.12.0",
+    "postcss": "^8.5.28",
+    "prettier": "^3.9.9",
+    "publint": "^0.3.24",
+    "tsdown": "^0.23.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.70.1"
   },
-  "eslintConfig": {
-    "parserOptions": {
-      "ecmaVersion": 2017
-    },
-    "env": {
-      "node": true,
-      "es6": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:jest/recommended"
-    ],
-    "rules": {
-      "jest/expect-expect": "off"
-    }
-  },
-  "jest": {
-    "coverageThreshold": {
-      "global": {
-        "statements": 100
-      }
-    }
+  "dependencies": {
+    "postcss-value-parser": "^4.2.0"
   }
 }

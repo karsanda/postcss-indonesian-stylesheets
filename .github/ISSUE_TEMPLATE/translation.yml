@@ -1,0 +1,34 @@
+name: Suggest a translation
+description: Propose an Indonesian word for a CSS property or value, or a better one for an existing word.
+title: '[Translation]: '
+labels: [translation]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options:
+        - Property
+        - Value
+    validations:
+      required: true
+  - type: input
+    id: css
+    attributes:
+      label: CSS keyword
+      placeholder: e.g. background-color
+    validations:
+      required: true
+  - type: input
+    id: indonesian
+    attributes:
+      label: Proposed Indonesian word
+      description: Lowercase, words joined with hyphens.
+      placeholder: e.g. warna-latar
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Why this word? Links to KBBI or other references are welcome.
