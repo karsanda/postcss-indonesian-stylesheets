@@ -1,5 +1,14 @@
 # Change Log
 
+## 2.1.0
+
+### Minor Changes
+
+- 10fdc22: `paksakan!` is now case-insensitive and only matched as the last word of a value, so it is no longer stripped from strings. Property names inside `transition`, `transition-property` and `will-change` are translated (`transisi: lebar 1s` → `transition: width 1s`). `container-name`, `view-transition-name`, `anchor-name` and other name-only properties are left untouched.
+- a885bf5: Translate `@media`, `@supports`, `@container` and `@custom-media` conditions (`@media layar dan (lebar-minimal: 600px)` → `@media screen and (min-width: 600px)`) and pseudo-classes/elements (`a:arahkan::sebelum` → `a:hover::before`). Add your own with the new `media` and `selectors` options.
+- 78d6eac: Translate function names, e.g. `hitung()` → `calc()` and `gradien-linear()` → `linear-gradient()`. Add your own with the new `functions` option.
+- 31515ac: New `warnings` option reports unknown words that look like typos of an Indonesian word (`Unknown property "wrna". Did you mean "warna"?`). The package now ships `css-data.json` for VS Code autocomplete of Indonesian property names, pseudo-classes and pseudo-elements.
+
 ## 2.0.0
 
 ### Major Changes
