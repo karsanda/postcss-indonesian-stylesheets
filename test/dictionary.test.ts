@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import functions from '../src/functions.ts'
+import media from '../src/media.ts'
 import properties from '../src/properties.ts'
+import selectors from '../src/selectors.ts'
 import values from '../src/values.ts'
 import type { Translation } from '../src/properties.ts'
 
@@ -20,7 +22,9 @@ const LOANWORDS = new Set([
 for (const [name, list] of [
   ['properties', properties],
   ['values', values],
-  ['functions', functions]
+  ['functions', functions],
+  ['media', media],
+  ['selectors', selectors]
 ] as [string, Translation[]][]) {
   test(`${name}: ids are unique`, () => {
     const seen = new Set<string>()

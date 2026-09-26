@@ -1,12 +1,12 @@
 import type { Plugin } from 'postcss'
+import selectorParser from 'postcss-selector-parser'
 import valueParser from 'postcss-value-parser'
 import functions from './functions.ts'
+import media from './media.ts'
 import properties from './properties.ts'
+import type { Translation } from './properties.ts'
+import selectors from './selectors.ts'
 import values from './values.ts'
-
-const basePropertyMap = new Map(properties.map(({ id, en }) => [id, en]))
-const baseValueMap = new Map(values.map(({ id, en }) => [id, en]))
-const baseFunctionMap = new Map(functions.map(({ id, en }) => [id, en]))
 
 const IMPORTANT = 'paksakan!'
 
@@ -30,13 +30,14 @@ const identifierProperties = new Set([
 // Properties whose values name other properties
 const propertyListProperties = new Set(['transition', 'transition-property', 'will-change'])
 
+// At-rules whose params are media queries or declaration conditions
+const conditionAtRules = new Set(['container', 'custom-media', 'media', 'supports'])
+
 type Dictionary = Map<string, string>
 
-function extend(base: Dictionary, extra: Record<string, string> = {}) {
-  const entries = Object.entries(extra)
-  if (entries.length === 0) return base
-  const map = new Map(base)
-  for (const [id, en] of entries) map.set(id.toLowerCase(), en)
+function toMap(list: Translation[], extra: Record<string, string> = {}): Dictionary {
+  const map = new Map(list.map(({ id, en }) => [id, en]))
+  for (const [id, en] of Object.entries(extra)) map.set(id.toLowerCase(), en)
   return map
 }
 
@@ -76,9 +77,11 @@ function translateValue(value: string, words: Dictionary[], fns: Dictionary[]) {
 }
 
 function plugin(opts: plugin.Options = {}): Plugin {
-  const propertyMap = extend(basePropertyMap, opts.properties)
-  const valueMap = extend(baseValueMap, opts.values)
-  const functionMap = extend(baseFunctionMap, opts.functions)
+  const propertyMap = toMap(properties, opts.properties)
+  const valueMap = toMap(values, opts.values)
+  const functionMap = toMap(functions, opts.functions)
+  const mediaMap = toMap(media, opts.media)
+  const selectorMap = toMap(selectors, opts.selectors)
 
   return {
     postcssPlugin: 'postcss-indonesian-stylesheets',
@@ -91,12 +94,44 @@ function plugin(opts: plugin.Options = {}): Plugin {
 
       if (decl.prop.startsWith('--')) return
 
-      decl.prop = propertyMap.get(decl.prop.toLowerCase()) ?? decl.prop
+      decl.prop = lookup(decl.prop, [propertyMap]) ?? decl.prop
 
       if (identifierProperties.has(decl.prop)) return
 
       const words = propertyListProperties.has(decl.prop) ? [propertyMap, valueMap] : [valueMap]
       decl.value = translateValue(decl.value, words, [functionMap])
+    },
+    AtRule(atRule) {
+      if (!conditionAtRules.has(atRule.name.toLowerCase())) return
+      atRule.params = translateValue(
+        atRule.params,
+        [mediaMap, propertyMap, valueMap],
+        [functionMap]
+      )
+    },
+    Rule(rule) {
+      if (!rule.selector.includes(':')) return
+
+      let changed = false
+      const processor = selectorParser((root) => {
+        root.walkPseudos((pseudo) => {
+          const colons = pseudo.value.startsWith('::') ? '::' : ':'
+          const name = pseudo.value.slice(colons.length)
+          const en = lookup(name, [selectorMap])
+          if (en !== undefined && en !== name) {
+            pseudo.value = colons + en
+            changed = true
+          }
+        })
+      })
+
+      let selector: string
+      try {
+        selector = processor.processSync(rule.selector)
+      } catch {
+        return // Leave selectors the parser can't read for other tools to report
+      }
+      if (changed) rule.selector = selector
     }
   }
 }
@@ -112,6 +147,10 @@ declare namespace plugin {
     values?: Record<string, string>
     /** Extra or overriding function names, keyed Indonesian → English. */
     functions?: Record<string, string>
+    /** Extra or overriding media query words, keyed Indonesian → English. */
+    media?: Record<string, string>
+    /** Extra or overriding pseudo-class and pseudo-element names, keyed Indonesian → English. */
+    selectors?: Record<string, string>
   }
 }
 

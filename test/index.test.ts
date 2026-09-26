@@ -3,7 +3,9 @@ import { test } from 'node:test'
 import postcss from 'postcss'
 import functions from '../src/functions.ts'
 import plugin from '../src/index.ts'
+import media from '../src/media.ts'
 import properties from '../src/properties.ts'
+import selectors from '../src/selectors.ts'
 import values from '../src/values.ts'
 
 async function run(input: string, output: string, opts?: plugin.Options) {
@@ -33,6 +35,20 @@ test('converts functions', async (t) => {
     await t.test(`converts function ${id} to ${en}`, () =>
       run(`a { stub-property: ${id}(1px); }`, `a { stub-property: ${en}(1px); }`)
     )
+  }
+})
+
+test('converts media query words', async (t) => {
+  for (const { id, en } of media) {
+    await t.test(`converts media word ${id} to ${en}`, () =>
+      run(`@media ${id} {}`, `@media ${en} {}`)
+    )
+  }
+})
+
+test('converts pseudo-classes and pseudo-elements', async (t) => {
+  for (const { id, en } of selectors) {
+    await t.test(`converts selector ${id} to ${en}`, () => run(`a:${id} {}`, `a:${en} {}`))
   }
 })
 
@@ -113,7 +129,29 @@ test('converts function names and their arguments', async () => {
   await run('a { lebar: var(--x); }', 'a { width: var(--x); }')
 })
 
-test('accepts extra function names', async () => {
-  const opts = { functions: { tambah: 'calc' } }
+test('converts media queries and other condition at-rules', async () => {
+  await run('@media layar dan (lebar-minimal: 600px) {}', '@media screen and (min-width: 600px) {}')
+  await run('@media (preferensi-skema-warna: gelap) {}', '@media (prefers-color-scheme: dark) {}')
+  await run('@supports (warna: merah) {}', '@supports (color: red) {}')
+  await run('@container (lebar > 400px) {}', '@container (width > 400px) {}')
+  await run('@LAYER merah {}', '@LAYER merah {}')
+})
+
+test('converts selectors, leaving everything but pseudo names alone', async () => {
+  await run('a:arahkan::sebelum {}', 'a:hover::before {}')
+  await run('a:SEBELUM, b:bukan(:anak-pertama) {}', 'a:before, b:not(:first-child) {}')
+  await run('[title=":fokus"] .merah {}', '[title=":fokus"] .merah {}')
+  await run('a:hover,\n  b:unknown {}', 'a:hover,\n  b:unknown {}')
+  await run('a:arahkan) {}', 'a:arahkan) {}')
+})
+
+test('accepts extra function, media and selector words', async () => {
+  const opts = {
+    functions: { tambah: 'calc' },
+    media: { telepon: 'screen' },
+    selectors: { disorot: 'hover' }
+  }
   await run('a { lebar: tambah(1px); }', 'a { width: calc(1px); }', opts)
+  await run('@media telepon {}', '@media screen {}', opts)
+  await run('a:disorot {}', 'a:hover {}', opts)
 })
