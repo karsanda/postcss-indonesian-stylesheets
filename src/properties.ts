@@ -117,7 +117,7 @@ const dictionary = {
 
   // f
   fill: 'isi',
-  filter: 'filter',
+  filter: 'penyaring',
   flex: 'fleks',
   'flex-basis': 'basis-fleks',
   'flex-direction': 'arah-fleks',

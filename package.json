@@ -38,10 +38,12 @@
     "typecheck": "tsc",
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
-    "test": "node --test --experimental-test-coverage --test-coverage-include='src/**' --test-coverage-lines=100 --test-coverage-functions=100 test/index.test.ts",
+    "dictionary": "node scripts/dictionary.ts",
+    "check:dictionary": "pnpm dictionary && git diff --exit-code DICTIONARY.md",
+    "test": "node --test --experimental-test-coverage --test-coverage-include='src/**' --test-coverage-lines=100 --test-coverage-functions=100 test/index.test.ts test/dictionary.test.ts",
     "test:dist": "pnpm build && node --test test/dist.test.ts",
     "check:pkg": "publint && attw --pack --profile node16",
-    "verify": "pnpm lint && pnpm typecheck && pnpm test && pnpm test:dist && pnpm check:pkg",
+    "verify": "pnpm lint && pnpm typecheck && pnpm test && pnpm check:dictionary && pnpm test:dist && pnpm check:pkg",
     "changeset": "changeset",
     "release": "pnpm build && changeset publish",
     "prepublishOnly": "pnpm build"
@@ -68,5 +70,8 @@
     "tsdown": "^0.23.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.70.1"
+  },
+  "dependencies": {
+    "postcss-value-parser": "^4.2.0"
   }
 }

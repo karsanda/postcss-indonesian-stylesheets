@@ -65,15 +65,37 @@ export default {
 
 [official docs]: https://github.com/postcss/postcss#usage
 
-## Documentations
+## How it works
 
-- [CSS Properties](https://github.com/karsanda/postcss-indonesian-stylesheets/blob/main/src/properties.ts)
-- [CSS Values](https://github.com/karsanda/postcss-indonesian-stylesheets/blob/main/src/values.ts)
+- Property names and every keyword in a value are translated, including keywords inside
+  functions: `margin: 0 otomatis` → `margin: 0 auto`, `var(--x, merah)` → `var(--x, red)`.
+- Matching is case-insensitive.
+- `paksakan!` becomes `!important`.
+- Strings, `url()`, custom property values (`--foo: merah`) and author-defined names
+  (`font-family`, `animation-name`, `grid-area`, `grid-template-areas`, `counter-*`) are left untouched.
+- Unknown words pass through unchanged, so Indonesian and English can be mixed freely.
+
+## Options
+
+Add your own words or override the built-in ones. Keys are the Indonesian words, values are the CSS they become:
+
+```js
+indonesian({
+  properties: { 'warna-teks': 'color' },
+  values: { 'merah-bata': 'firebrick' }
+})
+```
+
+## Dictionary
+
+See [DICTIONARY.md](DICTIONARY.md) for every supported property and value.
 
 ## Contributing
 
 `postcss-indonesian-stylesheets` doesn't cover all CSS properties and values in Indonesian.
 Any help in translating and adding more Indonesian word for properties and values is always appreciated.
+Add words to `src/properties.ts` or `src/values.ts`, then run `pnpm dictionary` to regenerate `DICTIONARY.md`,
+or [suggest a translation](https://github.com/karsanda/postcss-indonesian-stylesheets/issues/new?template=translation.yml).
 
 ### Development
 
@@ -84,6 +106,7 @@ pnpm install
 pnpm test        # unit tests with a 100% coverage gate
 pnpm lint        # ESLint + Prettier check
 pnpm format      # apply Prettier
+pnpm dictionary  # regenerate DICTIONARY.md after editing the word lists
 pnpm verify      # everything CI runs: lint, typecheck, tests, build, package checks
 pnpm changeset   # describe your change for the next release
 ```

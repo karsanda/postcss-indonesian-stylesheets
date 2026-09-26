@@ -3,3 +3,4 @@ coverage
 pnpm-lock.yaml
 CHANGELOG.md
 .changeset/*.md
+DICTIONARY.md

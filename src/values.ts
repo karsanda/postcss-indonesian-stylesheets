@@ -89,7 +89,7 @@ const dictionary = {
   thin: 'tipis',
   medium: 'sedang',
   thick: 'paling-tebal',
-  solid: 'solid',
+  solid: 'padat',
   dashed: 'putus-putus',
   dotted: 'titik-titik',
   double: 'ganda',
