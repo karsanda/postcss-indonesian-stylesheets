@@ -1,12 +1,12 @@
-const properties = {
+const dictionary = {
   // a
   'accent-color': 'warna-aksen',
   'align-content': 'laraskan-konten',
   'align-items': 'laraskan-item',
   'align-self': 'laraskan-diri-sendiri',
-  'all': 'semua',
+  all: 'semua',
 
-  'animation': 'animasi',
+  animation: 'animasi',
   'animation-delay': 'tunda-animasi',
   'animation-direction': 'arah-animasi',
   'animation-duration': 'durasi-animasi',
@@ -15,14 +15,14 @@ const properties = {
   'animation-name': 'nama-animasi',
   'animation-timing-function': 'fungsi-waktu-animasi',
 
-  'appearance': 'penampakan',
+  appearance: 'penampakan',
   'aspect-ratio': 'aspek-rasio',
 
   // b
   'backdrop-filter': 'filter-latar',
   'backface-visibility': 'visibilitas-sisi-belakang',
 
-  'background': 'latar-belakang',
+  background: 'latar-belakang',
   'background-attachment': 'sisipan-latar-belakang',
   'background-blend-mode': 'mode-campuran-latar-belakang',
   'background-clip': 'potongan-latar-belakang',
@@ -33,7 +33,7 @@ const properties = {
   'background-repeat': 'ulangi-latar-belakang',
   'background-size': 'ukuran-latar-belakang',
 
-  'border': 'batas',
+  border: 'batas',
   'border-block': 'batas-blok',
   'border-block-start': 'batas-blok-awal',
   'border-block-end': 'batas-blok-akhir',
@@ -83,17 +83,17 @@ const properties = {
 
   'border-width': 'lebar-batas',
 
-  'bottom': 'bawah',
+  bottom: 'bawah',
   'box-shadow': 'bayangan-kontainer',
   'box-sizing': 'model-ukuran-kontainer',
 
   // c
-  'clear': 'hapus',
-  'clip': 'potong',
-  'color': 'warna',
+  clear: 'hapus',
+  clip: 'potong',
+  color: 'warna',
   'color-scheme': 'skema-warna',
   'column-count': 'jumlah-kolom',
-  'column-fill': 'isi-kolom', 	
+  'column-fill': 'isi-kolom',
   'column-gap': 'jarak-kolom',
   'column-rule': 'garis-kolom',
   'column-rule-color': 'warna-garis-kolom',
@@ -101,24 +101,24 @@ const properties = {
   'column-rule-width': 'lebar-garis-kolom',
   'column-span': 'rentang-kolom',
   'column-width': 'lebar-kolom',
-  'columns': 'kolom',
-  'content': 'konten',
+  columns: 'kolom',
+  content: 'konten',
   'content-visibility': 'visibilitas-konten',
   'counter-increment': 'tambahkan-pembilang',
   'counter-reset': 'atur-ulang-pembilang',
   'counter-set': 'atur-pembilang',
-  'cursor': 'kursor',
+  cursor: 'kursor',
 
   // d, e
-  'direction': 'arah',
-  'display': 'tampilan',
+  direction: 'arah',
+  display: 'tampilan',
 
   'empty-cells': 'sel-kosong',
 
   // f
-  'fill': 'isi',
-  'filter': 'filter',
-  'flex': 'fleks',
+  fill: 'isi',
+  filter: 'filter',
+  flex: 'fleks',
   'flex-basis': 'basis-fleks',
   'flex-direction': 'arah-fleks',
   'flex-flow': 'aliran-fleks',
@@ -126,8 +126,8 @@ const properties = {
   'flex-shrink': 'penyusutan-fleks',
   'flex-wrap': 'bungkus-fleks',
 
-  'float': 'apung',
-  'font': 'tulisan',
+  float: 'apung',
+  font: 'tulisan',
   'font-family': 'kumpulan-model-tulisan',
   'font-size': 'ukuran-tulisan',
   'font-size-adjust': 'sesuaikan-ukuran-tulisan',
@@ -139,8 +139,8 @@ const properties = {
   'font-weight': 'ketebalan-tulisan',
 
   // g
-  'gap': 'jarak',
-  'grid': 'grid',
+  gap: 'jarak',
+  grid: 'grid',
   'grid-area': 'daerah-grid',
   'grid-auto-columns': 'grid-kolom-otomatis',
   'grid-auto-flow': 'grid-alir-otomatis',
@@ -157,12 +157,12 @@ const properties = {
   'grid-template-rows': 'grid-templat-baris',
 
   // h
-  'height': 'tinggi',
-  'hyphens': 'tanda-penghubung',
+  height: 'tinggi',
+  hyphens: 'tanda-penghubung',
 
   // i
   'initial-letter': 'huruf-awal',
-  'isolation': 'isolasi',
+  isolation: 'isolasi',
 
   // j
   'justify-content': 'ratakan-konten',
@@ -170,7 +170,7 @@ const properties = {
   'justify-self': 'ratakan-diri-sendiri',
 
   // l
-  'left': 'kiri',
+  left: 'kiri',
   'letter-spacing': 'spasi-huruf',
   'line-break': 'jeda-baris',
   'line-clamp': 'jepit-baris',
@@ -181,7 +181,7 @@ const properties = {
   'list-style-type': 'tipe-gaya-daftar',
 
   // m
-  'margin': 'pinggir',
+  margin: 'pinggir',
   'margin-block': 'pinggir-blok',
   'margin-block-end': 'pinggir-blok-akhir',
   'margin-block-start': 'pinggir-blok-awal',
@@ -204,19 +204,19 @@ const properties = {
   // o
   'object-fit': 'sesuaikan-objek',
   'object-position': 'posisi-objek',
-  'opacity': 'transparansi',
-  'order': 'urutan',
-  'outline': 'kontur',
+  opacity: 'transparansi',
+  order: 'urutan',
+  outline: 'kontur',
   'outline-color': 'warna-kontur',
   'outline-offset': 'jarak-kontur',
   'outline-style': 'gaya-kontur',
   'outline-width': 'lebar-kontur',
-  'overflow': 'luapan',
+  overflow: 'luapan',
   'overflow-x': 'luapan-x',
   'overflow-y': 'luapan-y',
 
   // p
-  'padding': 'lapisan',
+  padding: 'lapisan',
   'padding-block': 'lapisan-blok',
   'padding-block-start': 'lapisan-blok-awal',
   'padding-block-end': 'lapisan-blok-akhir',
@@ -226,31 +226,31 @@ const properties = {
   'padding-inline': 'lapisan-sejajar',
   'padding-inline-start': 'lapisan-sejajar-awal',
   'padding-inline-end': 'lapisan-sejajar-akhir',
-  
+
   'padding-left': 'lapisan-kiri',
   'padding-right': 'lapisan-kanan',
   'padding-top': 'lapisan-atas',
 
-  'perspective': 'perspektif',
+  perspective: 'perspektif',
   'perspective-origin': 'awalan-perspektif',
   'place-content': 'tempatkan-konten',
   'place-items': 'tempatkan-item',
   'place-self': 'tempatkan-diri-sendiri',
-  'position': 'posisi',
+  position: 'posisi',
 
   // q, r
-  'quotes': 'tanda-petik',
-  'resize': 'ubah-ukuran',
-  'right': 'kanan',
-  'rotate': 'rotasi',
+  quotes: 'tanda-petik',
+  resize: 'ubah-ukuran',
+  right: 'kanan',
+  rotate: 'rotasi',
   'row-gap': 'jarak-baris',
 
   // s
-  'scale': 'skala',
+  scale: 'skala',
   'scroll-behavior': 'perilaku-gulir',
   'scroll-margin': 'pinggiran-gulir',
   'scroll-padding': 'lapisan-gulir',
-  'scrollbar': 'bilah-gulir',
+  scrollbar: 'bilah-gulir',
 
   // t
   'table-layout': 'tata-letak-tabel',
@@ -265,30 +265,40 @@ const properties = {
   'text-orientation': 'orientasi-teks',
   'text-overflow': 'luapan-teks',
   'text-shadow': 'bayangan-teks',
-  'top': 'atas',
+  top: 'atas',
   'transform-origin': 'awalan-transformasi',
   'transform-style': 'gaya-transformasi',
-  'transform': 'transformasi',
+  transform: 'transformasi',
   'transition-delay': 'tunda-transisi',
   'transition-duration': 'durasi-transisi',
   'transition-property': 'properti-transisi',
-  'transition-timing-function' : 'fungsi-waktu-transisi',
-  'transition': 'transisi',
-  'translate': 'translasi',
+  'transition-timing-function': 'fungsi-waktu-transisi',
+  transition: 'transisi',
+  translate: 'translasi',
 
   // u, v, w, z
   'user-select': 'seleksi-pengguna',
 
   'vertical-align': 'rata-vertikal',
-  'visibility': 'visibilitas',
+  visibility: 'visibilitas',
 
-  'white-space' : 'ruang-kosong',
+  'white-space': 'ruang-kosong',
   'will-change': 'akan-berubah',
-  'width': 'lebar',
+  width: 'lebar',
   'word-break': 'pemisahan-kata',
   'word-spacing': 'spasi-antar-kata',
   'writing-mode': 'model-penulisan',
   'z-index': 'indeks-z'
+} as const satisfies Record<string, string>
+
+export interface Translation {
+  en: string
+  id: string
 }
 
-module.exports = Object.keys(properties).map(key => ({ en: key, id: properties[key] }))
+const properties: Translation[] = Object.entries(dictionary).map(([en, id]) => ({
+  en,
+  id
+}))
+
+export default properties
