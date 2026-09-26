@@ -1,0 +1,1081 @@
+{
+  "version": 1.1,
+  "properties": [
+    {
+      "name": "warna-aksen",
+      "description": "accent-color"
+    },
+    {
+      "name": "laraskan-konten",
+      "description": "align-content"
+    },
+    {
+      "name": "laraskan-item",
+      "description": "align-items"
+    },
+    {
+      "name": "laraskan-diri-sendiri",
+      "description": "align-self"
+    },
+    {
+      "name": "semua",
+      "description": "all"
+    },
+    {
+      "name": "animasi",
+      "description": "animation"
+    },
+    {
+      "name": "tunda-animasi",
+      "description": "animation-delay"
+    },
+    {
+      "name": "arah-animasi",
+      "description": "animation-direction"
+    },
+    {
+      "name": "durasi-animasi",
+      "description": "animation-duration"
+    },
+    {
+      "name": "mode-isi-animasi",
+      "description": "animation-fill-mode"
+    },
+    {
+      "name": "berapa-kali-animasi-dijalankan",
+      "description": "animation-iteration-count"
+    },
+    {
+      "name": "nama-animasi",
+      "description": "animation-name"
+    },
+    {
+      "name": "fungsi-waktu-animasi",
+      "description": "animation-timing-function"
+    },
+    {
+      "name": "penampakan",
+      "description": "appearance"
+    },
+    {
+      "name": "aspek-rasio",
+      "description": "aspect-ratio"
+    },
+    {
+      "name": "filter-latar",
+      "description": "backdrop-filter"
+    },
+    {
+      "name": "visibilitas-sisi-belakang",
+      "description": "backface-visibility"
+    },
+    {
+      "name": "latar-belakang",
+      "description": "background"
+    },
+    {
+      "name": "sisipan-latar-belakang",
+      "description": "background-attachment"
+    },
+    {
+      "name": "mode-campuran-latar-belakang",
+      "description": "background-blend-mode"
+    },
+    {
+      "name": "potongan-latar-belakang",
+      "description": "background-clip"
+    },
+    {
+      "name": "warna-latar-belakang",
+      "description": "background-color"
+    },
+    {
+      "name": "gambar-latar-belakang",
+      "description": "background-image"
+    },
+    {
+      "name": "awalan-latar-belakang",
+      "description": "background-origin"
+    },
+    {
+      "name": "posisi-latar-belakang",
+      "description": "background-position"
+    },
+    {
+      "name": "ulangi-latar-belakang",
+      "description": "background-repeat"
+    },
+    {
+      "name": "ukuran-latar-belakang",
+      "description": "background-size"
+    },
+    {
+      "name": "batas",
+      "description": "border"
+    },
+    {
+      "name": "batas-blok",
+      "description": "border-block"
+    },
+    {
+      "name": "batas-blok-akhir",
+      "description": "border-block-end"
+    },
+    {
+      "name": "batas-blok-awal",
+      "description": "border-block-start"
+    },
+    {
+      "name": "batas-bawah",
+      "description": "border-bottom"
+    },
+    {
+      "name": "warna-batas-bawah",
+      "description": "border-bottom-color"
+    },
+    {
+      "name": "radius-batas-kiri-bawah",
+      "description": "border-bottom-left-radius"
+    },
+    {
+      "name": "radius-batas-kanan-bawah",
+      "description": "border-bottom-right-radius"
+    },
+    {
+      "name": "model-batas-bawah",
+      "description": "border-bottom-style"
+    },
+    {
+      "name": "lebar-batas-bawah",
+      "description": "border-bottom-width"
+    },
+    {
+      "name": "runtuhan-batas",
+      "description": "border-collapse"
+    },
+    {
+      "name": "warna-batas",
+      "description": "border-color"
+    },
+    {
+      "name": "gambar-batas",
+      "description": "border-image"
+    },
+    {
+      "name": "gambar-batas-awal",
+      "description": "border-image-outset"
+    },
+    {
+      "name": "ulangi-gambar-batas",
+      "description": "border-image-repeat"
+    },
+    {
+      "name": "potong-gambar-batas",
+      "description": "border-image-slice"
+    },
+    {
+      "name": "sumber-gambar-batas",
+      "description": "border-image-source"
+    },
+    {
+      "name": "lebar-gambar-batas",
+      "description": "border-image-width"
+    },
+    {
+      "name": "batas-sejajar",
+      "description": "border-inline"
+    },
+    {
+      "name": "batas-sejajar-akhir",
+      "description": "border-inline-end"
+    },
+    {
+      "name": "batas-sejajar-awal",
+      "description": "border-inline-start"
+    },
+    {
+      "name": "batas-kiri",
+      "description": "border-left"
+    },
+    {
+      "name": "warna-batas-kiri",
+      "description": "border-left-color"
+    },
+    {
+      "name": "model-batas-kiri",
+      "description": "border-left-style"
+    },
+    {
+      "name": "lebar-batas-kiri",
+      "description": "border-left-width"
+    },
+    {
+      "name": "radius-batas",
+      "description": "border-radius"
+    },
+    {
+      "name": "batas-kanan",
+      "description": "border-right"
+    },
+    {
+      "name": "warna-batas-kanan",
+      "description": "border-right-color"
+    },
+    {
+      "name": "model-batas-kanan",
+      "description": "border-right-style"
+    },
+    {
+      "name": "lebar-batas-kanan",
+      "description": "border-right-width"
+    },
+    {
+      "name": "spasi-batas",
+      "description": "border-spacing"
+    },
+    {
+      "name": "model-batas",
+      "description": "border-style"
+    },
+    {
+      "name": "batas-atas",
+      "description": "border-top"
+    },
+    {
+      "name": "warna-batas-atas",
+      "description": "border-top-color"
+    },
+    {
+      "name": "radius-batas-kiri-atas",
+      "description": "border-top-left-radius"
+    },
+    {
+      "name": "radius-batas-kanan-atas",
+      "description": "border-top-right-radius"
+    },
+    {
+      "name": "model-batas-atas",
+      "description": "border-top-style"
+    },
+    {
+      "name": "lebar-batas-atas",
+      "description": "border-top-width"
+    },
+    {
+      "name": "lebar-batas",
+      "description": "border-width"
+    },
+    {
+      "name": "bawah",
+      "description": "bottom"
+    },
+    {
+      "name": "bayangan-kontainer",
+      "description": "box-shadow"
+    },
+    {
+      "name": "model-ukuran-kontainer",
+      "description": "box-sizing"
+    },
+    {
+      "name": "hapus",
+      "description": "clear"
+    },
+    {
+      "name": "potong",
+      "description": "clip"
+    },
+    {
+      "name": "warna",
+      "description": "color"
+    },
+    {
+      "name": "skema-warna",
+      "description": "color-scheme"
+    },
+    {
+      "name": "jumlah-kolom",
+      "description": "column-count"
+    },
+    {
+      "name": "isi-kolom",
+      "description": "column-fill"
+    },
+    {
+      "name": "jarak-kolom",
+      "description": "column-gap"
+    },
+    {
+      "name": "garis-kolom",
+      "description": "column-rule"
+    },
+    {
+      "name": "warna-garis-kolom",
+      "description": "column-rule-color"
+    },
+    {
+      "name": "gaya-garis-kolom",
+      "description": "column-rule-style"
+    },
+    {
+      "name": "lebar-garis-kolom",
+      "description": "column-rule-width"
+    },
+    {
+      "name": "rentang-kolom",
+      "description": "column-span"
+    },
+    {
+      "name": "lebar-kolom",
+      "description": "column-width"
+    },
+    {
+      "name": "kolom",
+      "description": "columns"
+    },
+    {
+      "name": "konten",
+      "description": "content"
+    },
+    {
+      "name": "visibilitas-konten",
+      "description": "content-visibility"
+    },
+    {
+      "name": "tambahkan-pembilang",
+      "description": "counter-increment"
+    },
+    {
+      "name": "atur-ulang-pembilang",
+      "description": "counter-reset"
+    },
+    {
+      "name": "atur-pembilang",
+      "description": "counter-set"
+    },
+    {
+      "name": "kursor",
+      "description": "cursor"
+    },
+    {
+      "name": "arah",
+      "description": "direction"
+    },
+    {
+      "name": "tampilan",
+      "description": "display"
+    },
+    {
+      "name": "sel-kosong",
+      "description": "empty-cells"
+    },
+    {
+      "name": "isi",
+      "description": "fill"
+    },
+    {
+      "name": "penyaring",
+      "description": "filter"
+    },
+    {
+      "name": "fleks",
+      "description": "flex"
+    },
+    {
+      "name": "basis-fleks",
+      "description": "flex-basis"
+    },
+    {
+      "name": "arah-fleks",
+      "description": "flex-direction"
+    },
+    {
+      "name": "aliran-fleks",
+      "description": "flex-flow"
+    },
+    {
+      "name": "pelebaran-fleks",
+      "description": "flex-grow"
+    },
+    {
+      "name": "penyusutan-fleks",
+      "description": "flex-shrink"
+    },
+    {
+      "name": "bungkus-fleks",
+      "description": "flex-wrap"
+    },
+    {
+      "name": "apung",
+      "description": "float"
+    },
+    {
+      "name": "tulisan",
+      "description": "font"
+    },
+    {
+      "name": "kumpulan-model-tulisan",
+      "description": "font-family"
+    },
+    {
+      "name": "ukuran-tulisan",
+      "description": "font-size"
+    },
+    {
+      "name": "sesuaikan-ukuran-tulisan",
+      "description": "font-size-adjust"
+    },
+    {
+      "name": "rentangkan-tulisan",
+      "description": "font-stretch"
+    },
+    {
+      "name": "gaya-tulisan",
+      "description": "font-style"
+    },
+    {
+      "name": "sintesis-font",
+      "description": "font-synthesis"
+    },
+    {
+      "name": "variasi-tulisan",
+      "description": "font-variant"
+    },
+    {
+      "name": "variasi-tulisan-numerik",
+      "description": "font-variant-numeric"
+    },
+    {
+      "name": "ketebalan-tulisan",
+      "description": "font-weight"
+    },
+    {
+      "name": "jarak",
+      "description": "gap"
+    },
+    {
+      "name": "grid",
+      "description": "grid"
+    },
+    {
+      "name": "daerah-grid",
+      "description": "grid-area"
+    },
+    {
+      "name": "grid-kolom-otomatis",
+      "description": "grid-auto-columns"
+    },
+    {
+      "name": "grid-alir-otomatis",
+      "description": "grid-auto-flow"
+    },
+    {
+      "name": "grid-baris-otomatis",
+      "description": "grid-auto-rows"
+    },
+    {
+      "name": "grid-kolom",
+      "description": "grid-column"
+    },
+    {
+      "name": "grid-kolom-akhir",
+      "description": "grid-column-end"
+    },
+    {
+      "name": "grid-kolom-start",
+      "description": "grid-column-start"
+    },
+    {
+      "name": "grid-baris",
+      "description": "grid-row"
+    },
+    {
+      "name": "grid-baris-akhir",
+      "description": "grid-row-end"
+    },
+    {
+      "name": "grid-baris-awal",
+      "description": "grid-row-start"
+    },
+    {
+      "name": "grid-templat",
+      "description": "grid-template"
+    },
+    {
+      "name": "grid-templat-daerah",
+      "description": "grid-template-areas"
+    },
+    {
+      "name": "grid-templat-kolom",
+      "description": "grid-template-columns"
+    },
+    {
+      "name": "grid-templat-baris",
+      "description": "grid-template-rows"
+    },
+    {
+      "name": "tinggi",
+      "description": "height"
+    },
+    {
+      "name": "tanda-penghubung",
+      "description": "hyphens"
+    },
+    {
+      "name": "huruf-awal",
+      "description": "initial-letter"
+    },
+    {
+      "name": "isolasi",
+      "description": "isolation"
+    },
+    {
+      "name": "ratakan-konten",
+      "description": "justify-content"
+    },
+    {
+      "name": "ratakan-item",
+      "description": "justify-items"
+    },
+    {
+      "name": "ratakan-diri-sendiri",
+      "description": "justify-self"
+    },
+    {
+      "name": "kiri",
+      "description": "left"
+    },
+    {
+      "name": "spasi-huruf",
+      "description": "letter-spacing"
+    },
+    {
+      "name": "jeda-baris",
+      "description": "line-break"
+    },
+    {
+      "name": "jepit-baris",
+      "description": "line-clamp"
+    },
+    {
+      "name": "tinggi-garis",
+      "description": "line-height"
+    },
+    {
+      "name": "gaya-daftar",
+      "description": "list-style"
+    },
+    {
+      "name": "gambar-gaya-daftar",
+      "description": "list-style-image"
+    },
+    {
+      "name": "posisi-gaya-daftar",
+      "description": "list-style-position"
+    },
+    {
+      "name": "tipe-gaya-daftar",
+      "description": "list-style-type"
+    },
+    {
+      "name": "pinggir",
+      "description": "margin"
+    },
+    {
+      "name": "pinggir-blok",
+      "description": "margin-block"
+    },
+    {
+      "name": "pinggir-blok-akhir",
+      "description": "margin-block-end"
+    },
+    {
+      "name": "pinggir-blok-awal",
+      "description": "margin-block-start"
+    },
+    {
+      "name": "pinggir-bawah",
+      "description": "margin-bottom"
+    },
+    {
+      "name": "pinggir-sejajar",
+      "description": "margin-inline"
+    },
+    {
+      "name": "pinggir-sejajar-akhir",
+      "description": "margin-inline-end"
+    },
+    {
+      "name": "pinggir-sejajar-awal",
+      "description": "margin-inline-start"
+    },
+    {
+      "name": "pinggir-kiri",
+      "description": "margin-left"
+    },
+    {
+      "name": "pinggir-kanan",
+      "description": "margin-right"
+    },
+    {
+      "name": "pinggir-atas",
+      "description": "margin-top"
+    },
+    {
+      "name": "tinggi-maksimal",
+      "description": "max-height"
+    },
+    {
+      "name": "lebar-maksimal",
+      "description": "max-width"
+    },
+    {
+      "name": "tinggi-minimal",
+      "description": "min-height"
+    },
+    {
+      "name": "lebar-minimal",
+      "description": "min-width"
+    },
+    {
+      "name": "sesuaikan-objek",
+      "description": "object-fit"
+    },
+    {
+      "name": "posisi-objek",
+      "description": "object-position"
+    },
+    {
+      "name": "transparansi",
+      "description": "opacity"
+    },
+    {
+      "name": "urutan",
+      "description": "order"
+    },
+    {
+      "name": "kontur",
+      "description": "outline"
+    },
+    {
+      "name": "warna-kontur",
+      "description": "outline-color"
+    },
+    {
+      "name": "jarak-kontur",
+      "description": "outline-offset"
+    },
+    {
+      "name": "gaya-kontur",
+      "description": "outline-style"
+    },
+    {
+      "name": "lebar-kontur",
+      "description": "outline-width"
+    },
+    {
+      "name": "luapan",
+      "description": "overflow"
+    },
+    {
+      "name": "luapan-x",
+      "description": "overflow-x"
+    },
+    {
+      "name": "luapan-y",
+      "description": "overflow-y"
+    },
+    {
+      "name": "lapisan",
+      "description": "padding"
+    },
+    {
+      "name": "lapisan-blok",
+      "description": "padding-block"
+    },
+    {
+      "name": "lapisan-blok-akhir",
+      "description": "padding-block-end"
+    },
+    {
+      "name": "lapisan-blok-awal",
+      "description": "padding-block-start"
+    },
+    {
+      "name": "lapisan-bawah",
+      "description": "padding-bottom"
+    },
+    {
+      "name": "lapisan-sejajar",
+      "description": "padding-inline"
+    },
+    {
+      "name": "lapisan-sejajar-akhir",
+      "description": "padding-inline-end"
+    },
+    {
+      "name": "lapisan-sejajar-awal",
+      "description": "padding-inline-start"
+    },
+    {
+      "name": "lapisan-kiri",
+      "description": "padding-left"
+    },
+    {
+      "name": "lapisan-kanan",
+      "description": "padding-right"
+    },
+    {
+      "name": "lapisan-atas",
+      "description": "padding-top"
+    },
+    {
+      "name": "perspektif",
+      "description": "perspective"
+    },
+    {
+      "name": "awalan-perspektif",
+      "description": "perspective-origin"
+    },
+    {
+      "name": "tempatkan-konten",
+      "description": "place-content"
+    },
+    {
+      "name": "tempatkan-item",
+      "description": "place-items"
+    },
+    {
+      "name": "tempatkan-diri-sendiri",
+      "description": "place-self"
+    },
+    {
+      "name": "posisi",
+      "description": "position"
+    },
+    {
+      "name": "tanda-petik",
+      "description": "quotes"
+    },
+    {
+      "name": "ubah-ukuran",
+      "description": "resize"
+    },
+    {
+      "name": "kanan",
+      "description": "right"
+    },
+    {
+      "name": "rotasi",
+      "description": "rotate"
+    },
+    {
+      "name": "jarak-baris",
+      "description": "row-gap"
+    },
+    {
+      "name": "skala",
+      "description": "scale"
+    },
+    {
+      "name": "perilaku-gulir",
+      "description": "scroll-behavior"
+    },
+    {
+      "name": "pinggiran-gulir",
+      "description": "scroll-margin"
+    },
+    {
+      "name": "lapisan-gulir",
+      "description": "scroll-padding"
+    },
+    {
+      "name": "bilah-gulir",
+      "description": "scrollbar"
+    },
+    {
+      "name": "tata-letak-tabel",
+      "description": "table-layout"
+    },
+    {
+      "name": "rata-teks",
+      "description": "text-align"
+    },
+    {
+      "name": "rata-teks-akhir",
+      "description": "text-align-last"
+    },
+    {
+      "name": "dekorasi-teks",
+      "description": "text-decoration"
+    },
+    {
+      "name": "warna-dekorasi-teks",
+      "description": "text-decoration-color"
+    },
+    {
+      "name": "garis-dekorasi-teks",
+      "description": "text-decoration-line"
+    },
+    {
+      "name": "gaya-dekorasi-teks",
+      "description": "text-decoration-style"
+    },
+    {
+      "name": "ketebalan-dekorasi-teks",
+      "description": "text-decoration-thickness"
+    },
+    {
+      "name": "indentasi-teks",
+      "description": "text-indent"
+    },
+    {
+      "name": "orientasi-teks",
+      "description": "text-orientation"
+    },
+    {
+      "name": "luapan-teks",
+      "description": "text-overflow"
+    },
+    {
+      "name": "bayangan-teks",
+      "description": "text-shadow"
+    },
+    {
+      "name": "atas",
+      "description": "top"
+    },
+    {
+      "name": "transformasi",
+      "description": "transform"
+    },
+    {
+      "name": "awalan-transformasi",
+      "description": "transform-origin"
+    },
+    {
+      "name": "gaya-transformasi",
+      "description": "transform-style"
+    },
+    {
+      "name": "transisi",
+      "description": "transition"
+    },
+    {
+      "name": "tunda-transisi",
+      "description": "transition-delay"
+    },
+    {
+      "name": "durasi-transisi",
+      "description": "transition-duration"
+    },
+    {
+      "name": "properti-transisi",
+      "description": "transition-property"
+    },
+    {
+      "name": "fungsi-waktu-transisi",
+      "description": "transition-timing-function"
+    },
+    {
+      "name": "translasi",
+      "description": "translate"
+    },
+    {
+      "name": "seleksi-pengguna",
+      "description": "user-select"
+    },
+    {
+      "name": "rata-vertikal",
+      "description": "vertical-align"
+    },
+    {
+      "name": "visibilitas",
+      "description": "visibility"
+    },
+    {
+      "name": "ruang-kosong",
+      "description": "white-space"
+    },
+    {
+      "name": "lebar",
+      "description": "width"
+    },
+    {
+      "name": "akan-berubah",
+      "description": "will-change"
+    },
+    {
+      "name": "pemisahan-kata",
+      "description": "word-break"
+    },
+    {
+      "name": "spasi-antar-kata",
+      "description": "word-spacing"
+    },
+    {
+      "name": "model-penulisan",
+      "description": "writing-mode"
+    },
+    {
+      "name": "indeks-z",
+      "description": "z-index"
+    }
+  ],
+  "pseudoClasses": [
+    {
+      "name": ":aktif",
+      "description": ":active"
+    },
+    {
+      "name": ":tercentang",
+      "description": ":checked"
+    },
+    {
+      "name": ":dinonaktifkan",
+      "description": ":disabled"
+    },
+    {
+      "name": ":kosong",
+      "description": ":empty"
+    },
+    {
+      "name": ":diaktifkan",
+      "description": ":enabled"
+    },
+    {
+      "name": ":anak-pertama",
+      "description": ":first-child"
+    },
+    {
+      "name": ":pertama-dari-jenis",
+      "description": ":first-of-type"
+    },
+    {
+      "name": ":fokus",
+      "description": ":focus"
+    },
+    {
+      "name": ":fokus-terlihat",
+      "description": ":focus-visible"
+    },
+    {
+      "name": ":fokus-di-dalam",
+      "description": ":focus-within"
+    },
+    {
+      "name": ":memiliki",
+      "description": ":has"
+    },
+    {
+      "name": ":arahkan",
+      "description": ":hover"
+    },
+    {
+      "name": ":tidak-sah",
+      "description": ":invalid"
+    },
+    {
+      "name": ":adalah",
+      "description": ":is"
+    },
+    {
+      "name": ":anak-terakhir",
+      "description": ":last-child"
+    },
+    {
+      "name": ":terakhir-dari-jenis",
+      "description": ":last-of-type"
+    },
+    {
+      "name": ":tautan",
+      "description": ":link"
+    },
+    {
+      "name": ":bukan",
+      "description": ":not"
+    },
+    {
+      "name": ":anak-ke",
+      "description": ":nth-child"
+    },
+    {
+      "name": ":anak-ke-dari-akhir",
+      "description": ":nth-last-child"
+    },
+    {
+      "name": ":ke-dari-jenis",
+      "description": ":nth-of-type"
+    },
+    {
+      "name": ":anak-tunggal",
+      "description": ":only-child"
+    },
+    {
+      "name": ":opsional",
+      "description": ":optional"
+    },
+    {
+      "name": ":penampung-tampil",
+      "description": ":placeholder-shown"
+    },
+    {
+      "name": ":wajib",
+      "description": ":required"
+    },
+    {
+      "name": ":akar",
+      "description": ":root"
+    },
+    {
+      "name": ":sasaran",
+      "description": ":target"
+    },
+    {
+      "name": ":sah",
+      "description": ":valid"
+    },
+    {
+      "name": ":dikunjungi",
+      "description": ":visited"
+    },
+    {
+      "name": ":dimana",
+      "description": ":where"
+    }
+  ],
+  "pseudoElements": [
+    {
+      "name": "::sesudah",
+      "description": "::after"
+    },
+    {
+      "name": "::tirai-latar",
+      "description": "::backdrop"
+    },
+    {
+      "name": "::sebelum",
+      "description": "::before"
+    },
+    {
+      "name": "::huruf-pertama",
+      "description": "::first-letter"
+    },
+    {
+      "name": "::baris-pertama",
+      "description": "::first-line"
+    },
+    {
+      "name": "::penanda",
+      "description": "::marker"
+    },
+    {
+      "name": "::penampung",
+      "description": "::placeholder"
+    },
+    {
+      "name": "::seleksi",
+      "description": "::selection"
+    }
+  ]
+}

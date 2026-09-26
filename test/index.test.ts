@@ -2,13 +2,21 @@ import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import postcss from 'postcss'
 import plugin from '../src/index.ts'
+import functions from '../src/functions.ts'
+import media from '../src/media.ts'
 import properties from '../src/properties.ts'
+import selectors from '../src/selectors.ts'
 import values from '../src/values.ts'
 
 async function run(input: string, output: string, opts?: plugin.Options) {
   const result = await postcss([plugin(opts)]).process(input, { from: undefined })
   assert.equal(result.css, output)
   assert.equal(result.warnings().length, 0)
+}
+
+async function warnings(input: string, opts: plugin.Options = { warnings: true }) {
+  const result = await postcss([plugin(opts)]).process(input, { from: undefined })
+  return result.warnings().map(({ text }) => text)
 }
 
 test('converts properties', async (t) => {
@@ -27,6 +35,28 @@ test('converts values', async (t) => {
   }
 })
 
+test('converts functions', async (t) => {
+  for (const { id, en } of functions) {
+    await t.test(`converts function ${id} to ${en}`, () =>
+      run(`a { stub-property: ${id}(1px); }`, `a { stub-property: ${en}(1px); }`)
+    )
+  }
+})
+
+test('converts media query words', async (t) => {
+  for (const { id, en } of media) {
+    await t.test(`converts media word ${id} to ${en}`, () =>
+      run(`@media ${id} {}`, `@media ${en} {}`)
+    )
+  }
+})
+
+test('converts pseudo-classes and pseudo-elements', async (t) => {
+  for (const { id, en } of selectors) {
+    await t.test(`converts selector ${id} to ${en}`, () => run(`a:${id} {}`, `a:${en} {}`))
+  }
+})
+
 test('converts property and value together', async () => {
   await run('a { warna: merah; }', 'a { color: red; }')
 })
@@ -40,6 +70,12 @@ test('it will convert paksakan! to !important', async () => {
     'a { stub-property: stub-value paksakan!; }',
     'a { stub-property: stub-value !important; }'
   )
+})
+
+test('paksakan! is case-insensitive and must be a standalone trailing word', async () => {
+  await run('a { warna: merah PAKSAKAN! ; }', 'a { color: red !important; }')
+  await run('a { content: "paksakan!"; }', 'a { content: "paksakan!"; }')
+  await run('a { content: "a paksakan!"; }', 'a { content: "a paksakan!"; }')
 })
 
 test('converts every word in a multi-word value', async () => {
@@ -76,4 +112,71 @@ test('accepts extra and overriding words', async () => {
   await run('a { warna-teks: merah-bata; }', 'a { color: firebrick; }', opts)
   await run('a { warna: merah; }', 'a { color: crimson; }', opts)
   await run('a { warna: merah; }', 'a { color: red; }', {})
+})
+
+test('converts property names inside transition and will-change', async () => {
+  await run('a { transisi: lebar 1s, warna 2s; }', 'a { transition: width 1s, color 2s; }')
+  await run('a { properti-transisi: semua; }', 'a { transition-property: all; }')
+  await run('a { akan-berubah: transformasi; }', 'a { will-change: transform; }')
+})
+
+test('leaves more author-defined names untouched', async () => {
+  await run('a { container-name: merah; }', 'a { container-name: merah; }')
+  await run('a { view-transition-name: merah; }', 'a { view-transition-name: merah; }')
+})
+
+test('converts function names and their arguments', async () => {
+  await run(
+    'a { lebar: hitung(100% - 1px); latar-belakang: gradien-linear(merah, biru); }',
+    'a { width: calc(100% - 1px); background: linear-gradient(red, blue); }'
+  )
+  await run('a { transformasi: Translasi-X(1px); }', 'a { transform: translateX(1px); }')
+  await run('a { lebar: var(--x); }', 'a { width: var(--x); }')
+})
+
+test('converts media queries and other condition at-rules', async () => {
+  await run('@media layar dan (lebar-minimal: 600px) {}', '@media screen and (min-width: 600px) {}')
+  await run('@media (preferensi-skema-warna: gelap) {}', '@media (prefers-color-scheme: dark) {}')
+  await run('@supports (warna: merah) {}', '@supports (color: red) {}')
+  await run('@container (lebar > 400px) {}', '@container (width > 400px) {}')
+  await run('@LAYER merah {}', '@LAYER merah {}')
+})
+
+test('converts selectors, leaving everything but pseudo names alone', async () => {
+  await run('a:arahkan::sebelum {}', 'a:hover::before {}')
+  await run('a:SEBELUM, b:bukan(:anak-pertama) {}', 'a:before, b:not(:first-child) {}')
+  await run('[title=":fokus"] .merah {}', '[title=":fokus"] .merah {}')
+  await run('a:hover,\n  b:unknown {}', 'a:hover,\n  b:unknown {}')
+  await run('a:arahkan) {}', 'a:arahkan) {}')
+})
+
+test('accepts extra function, media and selector words', async () => {
+  const opts = {
+    functions: { tambah: 'calc' },
+    media: { telepon: 'screen' },
+    selectors: { disorot: 'hover' }
+  }
+  await run('a { lebar: tambah(1px); }', 'a { width: calc(1px); }', opts)
+  await run('@media telepon {}', '@media screen {}', opts)
+  await run('a:disorot {}', 'a:hover {}', opts)
+})
+
+test('warns about likely typos when enabled', async () => {
+  assert.deepEqual(await warnings('a { wrna: mrah; lebar: hitng(1px); }'), [
+    'Unknown property "wrna". Did you mean "warna"?',
+    'Unknown word "mrah". Did you mean "merah"?',
+    'Unknown function "hitng". Did you mean "hitung"?'
+  ])
+  assert.deepEqual(await warnings('@media layr {} a:arahkn {}'), [
+    'Unknown word "layr". Did you mean "layar"?',
+    'Unknown selector "arahkn". Did you mean "arahkan"?'
+  ])
+})
+
+test('does not warn about English, numbers or unrelated words', async () => {
+  assert.deepEqual(
+    await warnings('a { color: red; stub-property: 1px #fff -x qwertyuiop; } a:hover {}'),
+    []
+  )
+  assert.deepEqual(await warnings('a { wrna: mrah; }', {}), [])
 })
