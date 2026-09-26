@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import postcss from 'postcss'
+import functions from '../src/functions.ts'
 import plugin from '../src/index.ts'
 import properties from '../src/properties.ts'
 import values from '../src/values.ts'
@@ -23,6 +24,14 @@ test('converts values', async (t) => {
   for (const { id, en } of values) {
     await t.test(`converts value ${id} to ${en}`, () =>
       run(`a { stub-property: ${id}; }`, `a { stub-property: ${en}; }`)
+    )
+  }
+})
+
+test('converts functions', async (t) => {
+  for (const { id, en } of functions) {
+    await t.test(`converts function ${id} to ${en}`, () =>
+      run(`a { stub-property: ${id}(1px); }`, `a { stub-property: ${en}(1px); }`)
     )
   }
 })
@@ -93,4 +102,18 @@ test('converts property names inside transition and will-change', async () => {
 test('leaves more author-defined names untouched', async () => {
   await run('a { container-name: merah; }', 'a { container-name: merah; }')
   await run('a { view-transition-name: merah; }', 'a { view-transition-name: merah; }')
+})
+
+test('converts function names and their arguments', async () => {
+  await run(
+    'a { lebar: hitung(100% - 1px); latar-belakang: gradien-linear(merah, biru); }',
+    'a { width: calc(100% - 1px); background: linear-gradient(red, blue); }'
+  )
+  await run('a { transformasi: Translasi-X(1px); }', 'a { transform: translateX(1px); }')
+  await run('a { lebar: var(--x); }', 'a { width: var(--x); }')
+})
+
+test('accepts extra function names', async () => {
+  const opts = { functions: { tambah: 'calc' } }
+  await run('a { lebar: tambah(1px); }', 'a { width: calc(1px); }', opts)
 })

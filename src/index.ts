@@ -1,10 +1,12 @@
 import type { Plugin } from 'postcss'
 import valueParser from 'postcss-value-parser'
+import functions from './functions.ts'
 import properties from './properties.ts'
 import values from './values.ts'
 
 const basePropertyMap = new Map(properties.map(({ id, en }) => [id, en]))
 const baseValueMap = new Map(values.map(({ id, en }) => [id, en]))
+const baseFunctionMap = new Map(functions.map(({ id, en }) => [id, en]))
 
 const IMPORTANT = 'paksakan!'
 
@@ -55,15 +57,15 @@ function stripImportant(value: string) {
   return trimmed.slice(0, -IMPORTANT.length).trimEnd()
 }
 
-function translateValue(value: string, words: Dictionary[]) {
+function translateValue(value: string, words: Dictionary[], fns: Dictionary[]) {
   const parsed = valueParser(value)
   let changed = false
 
   parsed.walk((node) => {
+    if (node.type !== 'word' && node.type !== 'function') return
     if (node.type === 'function' && node.value.toLowerCase() === 'url') return false
-    if (node.type !== 'word') return
 
-    const en = lookup(node.value, words)
+    const en = lookup(node.value, node.type === 'word' ? words : fns)
     if (en !== undefined && en !== node.value) {
       node.value = en
       changed = true
@@ -76,6 +78,7 @@ function translateValue(value: string, words: Dictionary[]) {
 function plugin(opts: plugin.Options = {}): Plugin {
   const propertyMap = extend(basePropertyMap, opts.properties)
   const valueMap = extend(baseValueMap, opts.values)
+  const functionMap = extend(baseFunctionMap, opts.functions)
 
   return {
     postcssPlugin: 'postcss-indonesian-stylesheets',
@@ -93,7 +96,7 @@ function plugin(opts: plugin.Options = {}): Plugin {
       if (identifierProperties.has(decl.prop)) return
 
       const words = propertyListProperties.has(decl.prop) ? [propertyMap, valueMap] : [valueMap]
-      decl.value = translateValue(decl.value, words)
+      decl.value = translateValue(decl.value, words, [functionMap])
     }
   }
 }
@@ -107,6 +110,8 @@ declare namespace plugin {
     properties?: Record<string, string>
     /** Extra or overriding value keywords, keyed Indonesian → English. */
     values?: Record<string, string>
+    /** Extra or overriding function names, keyed Indonesian → English. */
+    functions?: Record<string, string>
   }
 }
 

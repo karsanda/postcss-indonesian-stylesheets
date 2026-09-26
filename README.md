@@ -69,6 +69,7 @@ export default {
 
 - Property names and every keyword in a value are translated, including keywords inside
   functions: `margin: 0 otomatis` → `margin: 0 auto`, `var(--x, merah)` → `var(--x, red)`.
+- Function names are translated: `hitung(100% - 1px)` → `calc(100% - 1px)`.
 - Property names in `transition`, `transition-property` and `will-change` are translated:
   `transisi: lebar 1s` → `transition: width 1s`.
 - Matching is case-insensitive.
@@ -87,7 +88,8 @@ Add your own words or override the built-in ones. Keys are the Indonesian words,
 ```js
 indonesian({
   properties: { 'warna-teks': 'color' },
-  values: { 'merah-bata': 'firebrick' }
+  values: { 'merah-bata': 'firebrick' },
+  functions: { tambah: 'calc' }
 })
 ```
 
@@ -99,7 +101,7 @@ See [DICTIONARY.md](DICTIONARY.md) for every supported property and value.
 
 `postcss-indonesian-stylesheets` doesn't cover all CSS properties and values in Indonesian.
 Any help in translating and adding more Indonesian word for properties and values is always appreciated.
-Add words to `src/properties.ts` or `src/values.ts`, then run `pnpm dictionary` to regenerate `DICTIONARY.md`,
+Add words to `src/properties.ts`, `src/values.ts` or `src/functions.ts`, then run `pnpm dictionary` to regenerate `DICTIONARY.md`,
 or [suggest a translation](https://github.com/karsanda/postcss-indonesian-stylesheets/issues/new?template=translation.yml).
 
 ### Development
