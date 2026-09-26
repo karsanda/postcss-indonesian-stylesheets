@@ -98,6 +98,25 @@ indonesian({
 })
 ```
 
+Set `warnings: true` to get a PostCSS warning for unknown words that look like a typo of an
+Indonesian word:
+
+```
+Unknown property "wrna". Did you mean "warna"?
+```
+
+## Editor autocomplete
+
+The package ships [VS Code CSS custom data](https://github.com/microsoft/vscode-custom-data)
+for the Indonesian property names, pseudo-classes and pseudo-elements. Add it to
+`.vscode/settings.json`:
+
+```json
+{
+  "css.customData": ["./node_modules/postcss-indonesian-stylesheets/css-data.json"]
+}
+```
+
 ## Dictionary
 
 See [DICTIONARY.md](DICTIONARY.md) for every supported property and value.
@@ -106,7 +125,8 @@ See [DICTIONARY.md](DICTIONARY.md) for every supported property and value.
 
 `postcss-indonesian-stylesheets` doesn't cover all CSS properties and values in Indonesian.
 Any help in translating and adding more Indonesian word for properties and values is always appreciated.
-Add words to the word lists in `src/` (`properties.ts`, `values.ts`, `functions.ts`, `media.ts`, `selectors.ts`), then run `pnpm dictionary` to regenerate `DICTIONARY.md`,
+Add words to the word lists in `src/` (`properties.ts`, `values.ts`, `functions.ts`, `media.ts`, `selectors.ts`),
+then run `pnpm dictionary` to regenerate `DICTIONARY.md` and `css-data.json`,
 or [suggest a translation](https://github.com/karsanda/postcss-indonesian-stylesheets/issues/new?template=translation.yml).
 
 ### Development
@@ -118,7 +138,7 @@ pnpm install
 pnpm test        # unit tests with a 100% coverage gate
 pnpm lint        # ESLint + Prettier check
 pnpm format      # apply Prettier
-pnpm dictionary  # regenerate DICTIONARY.md after editing the word lists
+pnpm dictionary  # regenerate DICTIONARY.md and css-data.json after editing the word lists
 pnpm verify      # everything CI runs: lint, typecheck, tests, build, package checks
 pnpm changeset   # describe your change for the next release
 ```

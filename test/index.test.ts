@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import postcss from 'postcss'
-import functions from '../src/functions.ts'
 import plugin from '../src/index.ts'
+import functions from '../src/functions.ts'
 import media from '../src/media.ts'
 import properties from '../src/properties.ts'
 import selectors from '../src/selectors.ts'
@@ -12,6 +12,11 @@ async function run(input: string, output: string, opts?: plugin.Options) {
   const result = await postcss([plugin(opts)]).process(input, { from: undefined })
   assert.equal(result.css, output)
   assert.equal(result.warnings().length, 0)
+}
+
+async function warnings(input: string, opts: plugin.Options = { warnings: true }) {
+  const result = await postcss([plugin(opts)]).process(input, { from: undefined })
+  return result.warnings().map(({ text }) => text)
 }
 
 test('converts properties', async (t) => {
@@ -154,4 +159,24 @@ test('accepts extra function, media and selector words', async () => {
   await run('a { lebar: tambah(1px); }', 'a { width: calc(1px); }', opts)
   await run('@media telepon {}', '@media screen {}', opts)
   await run('a:disorot {}', 'a:hover {}', opts)
+})
+
+test('warns about likely typos when enabled', async () => {
+  assert.deepEqual(await warnings('a { wrna: mrah; lebar: hitng(1px); }'), [
+    'Unknown property "wrna". Did you mean "warna"?',
+    'Unknown word "mrah". Did you mean "merah"?',
+    'Unknown function "hitng". Did you mean "hitung"?'
+  ])
+  assert.deepEqual(await warnings('@media layr {} a:arahkn {}'), [
+    'Unknown word "layr". Did you mean "layar"?',
+    'Unknown selector "arahkn". Did you mean "arahkan"?'
+  ])
+})
+
+test('does not warn about English, numbers or unrelated words', async () => {
+  assert.deepEqual(
+    await warnings('a { color: red; stub-property: 1px #fff -x qwertyuiop; } a:hover {}'),
+    []
+  )
+  assert.deepEqual(await warnings('a { wrna: mrah; }', {}), [])
 })

@@ -51,4 +51,23 @@ ${table(pseudoClasses, (name) => `:${name}`)}
 ${table(pseudoElements, (name) => `::${name}`)}
 `
 
+// VS Code CSS custom data: https://github.com/microsoft/vscode-custom-data
+function entries(list: Translation[], prefix = '') {
+  return sorted(list).map(({ en, id }) => ({
+    name: prefix + id,
+    description: `${prefix}${en}`
+  }))
+}
+
+const customData = {
+  version: 1.1,
+  properties: entries(properties),
+  pseudoClasses: entries(pseudoClasses, ':'),
+  pseudoElements: entries(pseudoElements, '::')
+}
+
 writeFileSync(new URL('../DICTIONARY.md', import.meta.url), markdown)
+writeFileSync(
+  new URL('../css-data.json', import.meta.url),
+  JSON.stringify(customData, null, 2) + '\n'
+)

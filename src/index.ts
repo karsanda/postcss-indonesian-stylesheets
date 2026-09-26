@@ -1,4 +1,4 @@
-import type { Plugin } from 'postcss'
+import type { Node, Plugin, Result } from 'postcss'
 import selectorParser from 'postcss-selector-parser'
 import valueParser from 'postcss-value-parser'
 import functions from './functions.ts'
@@ -6,6 +6,7 @@ import media from './media.ts'
 import properties from './properties.ts'
 import type { Translation } from './properties.ts'
 import selectors from './selectors.ts'
+import { suggest } from './suggest.ts'
 import values from './values.ts'
 
 const IMPORTANT = 'paksakan!'
@@ -34,6 +35,7 @@ const propertyListProperties = new Set(['transition', 'transition-property', 'wi
 const conditionAtRules = new Set(['container', 'custom-media', 'media', 'supports'])
 
 type Dictionary = Map<string, string>
+type Warn = (kind: string, word: string, dictionaries: Dictionary[]) => void
 
 function toMap(list: Translation[], extra: Record<string, string> = {}): Dictionary {
   const map = new Map(list.map(({ id, en }) => [id, en]))
@@ -58,7 +60,12 @@ function stripImportant(value: string) {
   return trimmed.slice(0, -IMPORTANT.length).trimEnd()
 }
 
-function translateValue(value: string, words: Dictionary[], fns: Dictionary[]) {
+function translateValue(
+  value: string,
+  words: Dictionary[],
+  fns: Dictionary[],
+  warn: Warn | undefined
+) {
   const parsed = valueParser(value)
   let changed = false
 
@@ -66,8 +73,11 @@ function translateValue(value: string, words: Dictionary[], fns: Dictionary[]) {
     if (node.type !== 'word' && node.type !== 'function') return
     if (node.type === 'function' && node.value.toLowerCase() === 'url') return false
 
-    const en = lookup(node.value, node.type === 'word' ? words : fns)
-    if (en !== undefined && en !== node.value) {
+    const dictionaries = node.type === 'word' ? words : fns
+    const en = lookup(node.value, dictionaries)
+    if (en === undefined) {
+      warn?.(node.type, node.value, dictionaries)
+    } else if (en !== node.value) {
       node.value = en
       changed = true
     }
@@ -83,9 +93,40 @@ function plugin(opts: plugin.Options = {}): Plugin {
   const mediaMap = toMap(media, opts.media)
   const selectorMap = toMap(selectors, opts.selectors)
 
+  const english = new Set(
+    [propertyMap, valueMap, functionMap, mediaMap, selectorMap].flatMap((map) =>
+      [...map.values()].map((en) => en.toLowerCase())
+    )
+  )
+
+  function warner(node: Node, result: Result): Warn | undefined {
+    if (!opts.warnings) return
+    return (kind, word, dictionaries) => {
+      const key = word.toLowerCase()
+      if (!/^[a-z]/.test(key) || english.has(key)) return
+      const match = suggest(
+        key,
+        dictionaries.flatMap((dictionary) => [...dictionary.keys()])
+      )
+      if (match !== undefined) {
+        node.warn(result, `Unknown ${kind} "${word}". Did you mean "${match}"?`, { word })
+      }
+    }
+  }
+
+  // PostCSS revisits changed nodes; translating once keeps warnings from repeating
+  const visited = new WeakSet<Node>()
+  function firstVisit(node: Node) {
+    if (visited.has(node)) return false
+    visited.add(node)
+    return true
+  }
+
   return {
     postcssPlugin: 'postcss-indonesian-stylesheets',
-    Declaration(decl) {
+    Declaration(decl, { result }) {
+      if (!firstVisit(decl)) return
+
       const withoutImportant = stripImportant(decl.value)
       if (withoutImportant !== undefined) {
         decl.value = withoutImportant
@@ -94,31 +135,38 @@ function plugin(opts: plugin.Options = {}): Plugin {
 
       if (decl.prop.startsWith('--')) return
 
-      decl.prop = lookup(decl.prop, [propertyMap]) ?? decl.prop
+      const warn = warner(decl, result)
+      const prop = lookup(decl.prop, [propertyMap])
+      if (prop === undefined) warn?.('property', decl.prop, [propertyMap])
+      else decl.prop = prop
 
       if (identifierProperties.has(decl.prop)) return
 
       const words = propertyListProperties.has(decl.prop) ? [propertyMap, valueMap] : [valueMap]
-      decl.value = translateValue(decl.value, words, [functionMap])
+      decl.value = translateValue(decl.value, words, [functionMap], warn)
     },
-    AtRule(atRule) {
-      if (!conditionAtRules.has(atRule.name.toLowerCase())) return
+    AtRule(atRule, { result }) {
+      if (!conditionAtRules.has(atRule.name.toLowerCase()) || !firstVisit(atRule)) return
       atRule.params = translateValue(
         atRule.params,
         [mediaMap, propertyMap, valueMap],
-        [functionMap]
+        [functionMap],
+        warner(atRule, result)
       )
     },
-    Rule(rule) {
-      if (!rule.selector.includes(':')) return
+    Rule(rule, { result }) {
+      if (!rule.selector.includes(':') || !firstVisit(rule)) return
 
+      const warn = warner(rule, result)
       let changed = false
       const processor = selectorParser((root) => {
         root.walkPseudos((pseudo) => {
           const colons = pseudo.value.startsWith('::') ? '::' : ':'
           const name = pseudo.value.slice(colons.length)
           const en = lookup(name, [selectorMap])
-          if (en !== undefined && en !== name) {
+          if (en === undefined) {
+            warn?.('selector', name, [selectorMap])
+          } else if (en !== name) {
             pseudo.value = colons + en
             changed = true
           }
@@ -151,6 +199,8 @@ declare namespace plugin {
     media?: Record<string, string>
     /** Extra or overriding pseudo-class and pseudo-element names, keyed Indonesian → English. */
     selectors?: Record<string, string>
+    /** Warn about unknown words that look like typos of an Indonesian word. */
+    warnings?: boolean
   }
 }
 

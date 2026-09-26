@@ -26,10 +26,12 @@
         "default": "./dist/index.cjs"
       }
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./css-data.json": "./css-data.json"
   },
   "files": [
     "dist",
+    "css-data.json",
     "CHANGELOG.md"
   ],
   "sideEffects": false,
@@ -39,7 +41,7 @@
     "lint": "eslint . && prettier --check .",
     "format": "prettier --write .",
     "dictionary": "node scripts/dictionary.ts",
-    "check:dictionary": "pnpm dictionary && git diff --exit-code DICTIONARY.md",
+    "check:dictionary": "pnpm dictionary && git diff --exit-code DICTIONARY.md css-data.json",
     "test": "node --test --experimental-test-coverage --test-coverage-include='src/**' --test-coverage-lines=100 --test-coverage-functions=100 test/index.test.ts test/dictionary.test.ts",
     "test:dist": "pnpm build && node --test test/dist.test.ts",
     "check:pkg": "publint && attw --pack --profile node16",
